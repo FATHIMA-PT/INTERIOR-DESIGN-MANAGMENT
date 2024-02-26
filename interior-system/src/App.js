@@ -23,6 +23,9 @@ function App() {
     </Routes>
     <Footer/>
 
+      <Route path='/Auth' element={<Auth />}/>
+    </Routes>
+    <Footer/>
     </>
   );
 }

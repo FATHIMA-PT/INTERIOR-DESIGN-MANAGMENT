@@ -1,10 +1,18 @@
-import logo from './logo.svg';
+import { Route, Routes } from 'react-router-dom';
 import './App.css';
+import Home from './Component/HOME_PAGE/Home';
+import Header from './Component/COMMON/HEADER/Header';
+import Footer from './Component/COMMON/FOOTER/Footer';
+
 
 function App() {
   return (
     <>
-      <h1>Interior Management System </h1>
+    <Header/>
+    <Routes>
+      <Route path='/' element={<Home/>} />
+    </Routes>
+    <Footer/>
     </>
   );
 }

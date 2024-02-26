@@ -1,18 +1,18 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
-import Auth from './Components/Auth';
-import Home from './Components/Home';
+import Home from './Component/HOME_PAGE/Home';
+import Header from './Component/COMMON/HEADER/Header';
+import Footer from './Component/COMMON/FOOTER/Footer';
+
 
 function App() {
   return (
     <>
-      <Routes>
-        <Route path='/' />
-        <Route path='/login' element={<Auth/>}/>
-        <Route path='/register' element={<Auth register/>}/>
-        <Route path='/home' element={<Home/>}/>
-
-      </Routes>
+    <Header/>
+    <Routes>
+      <Route path='/' element={<Home/>} />
+    </Routes>
+    <Footer/>
     </>
   );
 }

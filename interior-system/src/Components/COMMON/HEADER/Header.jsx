@@ -1,12 +1,13 @@
 
 import React from 'react'
 import './Header.css'
+import { Link } from 'react-router-dom'
 
 function Header() {
     return (
         <div>
             {/* Header */}
-            <header>
+            <header >
                 {/* logo */}
                 <div className="logo">
                     <img className='logo-image' src="https://i.pinimg.com/564x/67/f8/0d/67f80dfb909022631a1a1780c4efe870.jpg" alt="" />
@@ -16,12 +17,12 @@ function Header() {
                 {/* Navigation links */}
                 <nav>
                     <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="">Services</a></li>
-                        <li><a href="">Products</a></li>
-                        <li><a href="">Gallery</a></li>
-                        <li><a href="">Contact Us</a></li>
-                        <li><a href="">About Us</a></li>
+                        <li><Link to={'/'} className='nav-links'>Home</Link></li>
+                        <li><Link to={'/home'} className='nav-links'>Services</Link></li>
+                        <li><Link to={''} className='nav-links'>Products</Link></li>
+                        <li><Link to={'/gallery'} className='nav-links'>Gallery</Link></li>
+                        <li><Link to={''} className='nav-links'>Contact Us</Link></li>
+                        <li><Link to={''} className='nav-links'>About Us</Link></li>
                     </ul>
 
                 </nav>

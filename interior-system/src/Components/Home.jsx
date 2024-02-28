@@ -4,9 +4,9 @@ import { Button, Card } from "react-bootstrap";
 function Home() {
   return (
     <>
-      <div className="align-items-center justify-content-center ">
+      <div className="align-items-center justify-content-center mb-3">
         <h2 className="text-primary fw-bolder text-center mt-5">
-          HOME DESIGN{" "}
+          HOME INTERIOR DESIGN{" "}
         </h2>
         
           <div className="  container   justify-content-around mt-5 ">

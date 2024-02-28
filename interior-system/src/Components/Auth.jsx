@@ -19,7 +19,7 @@ function Auth() {
                 <div className="d-flex flex-column align-items-center">
                   <div className="d-flex mt-2 text-success">
                   <span className='h1 fw-bolder mb-5'>
-                                Interior System
+                                Interior Harmony
                                 </span>
                   </div>
                   <Form className="text-light w-75">

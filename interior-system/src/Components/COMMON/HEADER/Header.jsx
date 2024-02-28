@@ -19,10 +19,10 @@ function Header() {
                     <ul>
                         <li><Link to={'/'} className='nav-links'>Home</Link></li>
                         <li><Link to={'/home'} className='nav-links'>Services</Link></li>
-                        <li><Link to={''} className='nav-links'>Products</Link></li>
+                        <li><Link to={'products'} className='nav-links'>Products</Link></li>
                         <li><Link to={'/gallery'} className='nav-links'>Gallery</Link></li>
-                        <li><Link to={''} className='nav-links'>Contact Us</Link></li>
-                        <li><Link to={''} className='nav-links'>About Us</Link></li>
+                        <li><Link to={'/contact-us'} className='nav-links'>Contact Us</Link></li>
+                        <li><Link to={'/about-us'} className='nav-links'>About Us</Link></li>
                     </ul>
 
                 </nav>

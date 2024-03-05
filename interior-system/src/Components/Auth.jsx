@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
-import { registerAPI } from "./Services/allApis";
+import { loginAPI} from "./Services/allApis";
 import axios from "axios";
-import { loginAPI, registerAPI } from "./Services/allApis";
-import axios from "axios";
+
+
 
 
 function Auth({ register }) {

@@ -13,17 +13,17 @@ function Contact() {
             <div className="col-lg-6 ">
                 <form action="">
                 <div className='mb-4 mt-5 d-flex justify-content-center align-items-center '>
-                <i class="fa-solid fa-user mt-3 me-2 "></i>
+                <i className="fa-solid fa-user mt-3 me-2 "></i>
       <TextField style={{fontSize:''}} id="standard-basic1" label="Name" variant="standard" className='w-75 ' name='name' />
       </div>
 
       <div className='mb-4 mt-5 d-flex justify-content-center align-items-center  '>
-      <i class="fa-solid fa-envelope mt-3 me-2 "></i>
+      <i className="fa-solid fa-envelope mt-3 me-2 "></i>
       <TextField  id="standard-basic1" label="Email-id" variant="standard" className='w-75' name='name' />
       </div>
 
       <div className='mb-4 mt-5 d-flex justify-content-center align-items-center  '>
-      <i class="fa-solid fa-phone mt-3 me-2"></i>
+      <i className="fa-solid fa-phone mt-3 me-2"></i>
       <TextField  id="standard-basic1" label="Contact-Number" variant="standard" className='w-75' name='name' />
       </div>
 

@@ -11,6 +11,8 @@ import Gallery from './Components/GALLERY/Gallery';
 import Contact from './Components/COMMON/Contact-Us/Contact';
 import About from './Components/COMMON/About-Us/About';
 import Products from './Components/COMMON/Products/Products';
+import Cart from './Components/COMMON/Cart';
+import Wishlist from './Components/COMMON/Wishlist';
 
 function App() {
   return (
@@ -26,14 +28,16 @@ function App() {
         <Route path='/contact-us' element={<Contact/>}/>
         <Route path='/about-us' element={<About/>}/>
         <Route path='/products' element={<Products/>}/>
+        <Route path='/cart' element={<Cart/>}/>
+        <Route path='/wishlist' element={<Wishlist/>}/>
+
+
 
 
     </Routes>
     <Footer/>
 
-      {/* <Route path='/Auth' element={<Auth />}/> */}
-    {/* </Routes> */}
-    {/* <Footer/> */}
+     
     </>
   );
 }

@@ -3,6 +3,9 @@ import { Button, Form } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { registerAPI } from "./Services/allApis";
 import axios from "axios";
+import { loginAPI, registerAPI } from "./Services/allApis";
+import axios from "axios";
+
 
 function Auth({ register }) {
   const navigate = useNavigate()
@@ -39,6 +42,44 @@ function Auth({ register }) {
   
  
 
+  // login
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    // const { username, password } = userData;
+    // if ( !username || !password  ) {
+    //   alert("Please fill the form completely");
+    // } else {
+    //   // api call
+    //   try {
+    //     const response = await axios.post("http://127.0.0.1:8000/login/",userData);
+    //     console.log(response);
+    //     alert("Login Succes")
+    //     setUserData({username: "",
+    //     password: "",
+    //     })
+        // if(response.status == 200){
+        //   localStorage.setItem("token",response.data.token)
+        //   navigate('/')
+        // }
+       
+        
+    //   } catch (error) {
+    //     console.log(error);
+    //   }
+    //   // if(response.status==200)
+    // }
+    const response= await loginAPI(userData)
+    console.log(response);
+    if(response.status == 200){
+      localStorage.setItem("token",response.data.token)
+      navigate('/')
+    }
+    else{
+      alert("Incorrect Username and Password")
+    }
+
+  };
+
   return (
     <div
       style={{ width: "100%", height: "100vh" }}
@@ -60,8 +101,7 @@ function Auth({ register }) {
                   <span className="h1 fw-bolder mb-5">Interior Harmony</span>
                 </div>
                 <Form className="text-light w-75">
-                  {registerForm && (
-                    <Form.Group className="mb-3" controlId="formBasicName">
+                <Form.Group className="mb-3" controlId="formBasicName">
                       <Form.Control
                         type="text"
                         placeholder="Enter UserName"
@@ -72,8 +112,21 @@ function Auth({ register }) {
                         value={userData.username}
                       />
                     </Form.Group>
+                    {registerForm && (
+                            <Form.Group className="mb-3" controlId="formBasicEmail">
+                            <Form.Control
+                              type="email"
+                              placeholder="Enter EmailId"
+                              name="email"
+                              onChange={(e) =>
+                                setUserData({ ...userData, email: e.target.value })
+                              }
+                              value={userData.email}
+                            />
+                          </Form.Group>
                   )}
 
+<<<<<<< HEAD
                   <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Control
                       type="email"
@@ -85,6 +138,9 @@ function Auth({ register }) {
                       value={userData.email}
                     />
                   </Form.Group>
+=======
+                 
+>>>>>>> 29a39128ab6a4e58af39790986d8afef94581e51
                   <Form.Group className="mb-3" controlId="formBasicPassword">
                     <Form.Control
                       type="password"
@@ -95,7 +151,9 @@ function Auth({ register }) {
                       }
                       value={userData.password}
                     />
-                  </Form.Group>
+                     </Form.Group>
+                    {registerForm && (
+                 
                   <Form.Group className="mb-3" controlId="formBasictype">
                     <Form.Control
                       as="select"
@@ -106,11 +164,12 @@ function Auth({ register }) {
                       value={userData.user_type}
                     >
                       <option value="">Select User Type</option>
-                      <option value="customer">Customer</option>
-                      <option value="agent">Agent</option>
+                      <option value="Customer">Customer</option>
+                      <option value="Agent">Agent</option>
                       {/* Add other user types as needed */}
                     </Form.Control>
                   </Form.Group>
+                   )}
 
                   {registerForm ? (
                     <div>
@@ -132,6 +191,7 @@ function Auth({ register }) {
                   ) : (
                     <div>
                       <Button
+                        onClick={handleLogin}
                         variant="dark"
                         className="ms-5 mb-3 mt-3"
                         type="submit"

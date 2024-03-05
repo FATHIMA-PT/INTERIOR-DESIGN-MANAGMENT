@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
-import { Link } from "react-router-dom";
-import { registerAPI } from "./Services/allApis";
+import { Link, useNavigate } from "react-router-dom";
+import { loginAPI, registerAPI } from "./Services/allApis";
+import axios from "axios";
+
 
 function Auth({ register }) {
+  const navigate = useNavigate()
   const registerForm = register ? true : false;
   const [userData, setUserData] = useState({
     username: "",
@@ -11,7 +14,7 @@ function Auth({ register }) {
     password: "",
     user_type: "",
   });
-
+  console.log(userData)
   //  register
   const handleRegister = async (e) => {
     e.preventDefault();
@@ -20,10 +23,57 @@ function Auth({ register }) {
       alert("Please fill the form completely");
     } else {
       // api call
-      const response = await registerAPI(userData);
-      console.log(response);
+      try {
+        const response = await axios.post("http://127.0.0.1:8000/register/",userData);
+        console.log(response);
+        alert("Registred Succes")
+        setUserData({username:"",email: "",
+        password: "",
+        user_type: ""})
+        navigate('/login')
+      } catch (error) {
+        console.log(error);
+      }
       // if(response.status==200)
     }
+  };
+
+  // login
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    // const { username, password } = userData;
+    // if ( !username || !password  ) {
+    //   alert("Please fill the form completely");
+    // } else {
+    //   // api call
+    //   try {
+    //     const response = await axios.post("http://127.0.0.1:8000/login/",userData);
+    //     console.log(response);
+    //     alert("Login Succes")
+    //     setUserData({username: "",
+    //     password: "",
+    //     })
+        // if(response.status == 200){
+        //   localStorage.setItem("token",response.data.token)
+        //   navigate('/')
+        // }
+       
+        
+    //   } catch (error) {
+    //     console.log(error);
+    //   }
+    //   // if(response.status==200)
+    // }
+    const response= await loginAPI(userData)
+    console.log(response);
+    if(response.status == 200){
+      localStorage.setItem("token",response.data.token)
+      navigate('/')
+    }
+    else{
+      alert("Incorrect Username and Password")
+    }
+
   };
 
   return (
@@ -47,8 +97,7 @@ function Auth({ register }) {
                   <span className="h1 fw-bolder mb-5">Interior Harmony</span>
                 </div>
                 <Form className="text-light w-75">
-                  {registerForm && (
-                    <Form.Group className="mb-3" controlId="formBasicName">
+                <Form.Group className="mb-3" controlId="formBasicName">
                       <Form.Control
                         type="text"
                         placeholder="Enter UserName"
@@ -56,20 +105,24 @@ function Auth({ register }) {
                         onChange={(e) =>
                           setUserData({ ...userData, username: e.target.value })
                         }
+                        value={userData.username}
                       />
                     </Form.Group>
+                    {registerForm && (
+                            <Form.Group className="mb-3" controlId="formBasicEmail">
+                            <Form.Control
+                              type="email"
+                              placeholder="Enter EmailId"
+                              name="email"
+                              onChange={(e) =>
+                                setUserData({ ...userData, email: e.target.value })
+                              }
+                              value={userData.email}
+                            />
+                          </Form.Group>
                   )}
 
-                  <Form.Group className="mb-3" controlId="formBasicEmail">
-                    <Form.Control
-                      type="email"
-                      placeholder="Enter EmailId"
-                      name="email"
-                      onChange={(e) =>
-                        setUserData({ ...userData, email: e.target.value })
-                      }
-                    />
-                  </Form.Group>
+                 
                   <Form.Group className="mb-3" controlId="formBasicPassword">
                     <Form.Control
                       type="password"
@@ -78,8 +131,11 @@ function Auth({ register }) {
                       onChange={(e) =>
                         setUserData({ ...userData, password: e.target.value })
                       }
+                      value={userData.password}
                     />
-                  </Form.Group>
+                     </Form.Group>
+                    {registerForm && (
+                 
                   <Form.Group className="mb-3" controlId="formBasictype">
                     <Form.Control
                       as="select"
@@ -87,13 +143,15 @@ function Auth({ register }) {
                       onChange={(e) =>
                         setUserData({ ...userData, user_type: e.target.value })
                       }
+                      value={userData.user_type}
                     >
                       <option value="">Select User Type</option>
-                      <option value="customer">Customer</option>
-                      <option value="agent">Agent</option>
+                      <option value="Customer">Customer</option>
+                      <option value="Agent">Agent</option>
                       {/* Add other user types as needed */}
                     </Form.Control>
                   </Form.Group>
+                   )}
 
                   {registerForm ? (
                     <div>
@@ -115,6 +173,7 @@ function Auth({ register }) {
                   ) : (
                     <div>
                       <Button
+                        onClick={handleLogin}
                         variant="dark"
                         className="ms-5 mb-3 mt-3"
                         type="submit"

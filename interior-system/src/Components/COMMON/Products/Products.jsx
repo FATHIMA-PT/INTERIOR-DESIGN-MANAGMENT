@@ -21,9 +21,9 @@ function Products() {
 
           </Card.Text>
          <div className="d-flex justify-content-between "> 
-          <Button className="btn  mt-auto " ><i className="fa-solid fa-heart text-danger" style={{fontSize:"30px"}}></i></Button>
+          <Button className="btn  mt-auto bg-light" ><i className="fa-solid fa-heart text-danger" style={{fontSize:"30px"}}></i></Button>
          <Link to={'/cart'}>
-            <Button className="btn  mt-auto " ><i className="fa-solid fa-cart-plus text-success " style={{fontSize:"30px"}}></i></Button>
+            <Button className="btn  mt-auto  bg-light" ><i className="fa-solid fa-cart-plus text-success " style={{fontSize:"30px"}}></i></Button>
          </Link>
           </div>
         </Card.Body>

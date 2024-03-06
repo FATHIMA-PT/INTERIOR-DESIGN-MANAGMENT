@@ -5,7 +5,6 @@ import { loginAPI } from "./Services/allApis";
 import axios from "axios";
 
 
-
 function Auth({ register }) {
   const navigate = useNavigate()
   const registerForm = register ? true : false;

@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
-import { registerAPI } from "./Services/allApis";
+import { loginAPI } from "./Services/allApis";
 import axios from "axios";
-import { loginAPI, registerAPI } from "./Services/allApis";
-import axios from "axios";
+
 
 
 function Auth({ register }) {
@@ -32,7 +31,7 @@ function Auth({ register }) {
         setUserData({username:"",email: "",
         password: "",
         user_type: ""})
-        navigate('/login')
+        navigate('/')
       } catch (error) {
         console.log(error);
       }
@@ -70,9 +69,9 @@ function Auth({ register }) {
     // }
     const response= await loginAPI(userData)
     console.log(response);
-    if(response.status == 200){
-      localStorage.setItem("token",response.data.token)
-      navigate('/')
+    if(response.status === 200){
+      localStorage.setItem("token",response.data.access)
+      navigate('/home-page')
     }
     else{
       alert("Incorrect Username and Password")
@@ -126,21 +125,7 @@ function Auth({ register }) {
                           </Form.Group>
                   )}
 
-<<<<<<< HEAD
-                  <Form.Group className="mb-3" controlId="formBasicEmail">
-                    <Form.Control
-                      type="email"
-                      placeholder="Enter EmailId"
-                      name="email"
-                      onChange={(e) =>
-                        setUserData({ ...userData, email: e.target.value })
-                      }
-                      value={userData.email}
-                    />
-                  </Form.Group>
-=======
                  
->>>>>>> 29a39128ab6a4e58af39790986d8afef94581e51
                   <Form.Group className="mb-3" controlId="formBasicPassword">
                     <Form.Control
                       type="password"
@@ -185,7 +170,7 @@ function Auth({ register }) {
                       </Button>
                       <p className="text-dark mt-3">
                         Already have an account?{" "}
-                        <Link to={"/login"}>Login Here</Link>
+                        <Link to={"/"}>Login Here</Link>
                       </p>
                     </div>
                   ) : (

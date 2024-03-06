@@ -10,3 +10,4 @@ export const registerAPI = async(body)=>{
 export const loginAPI = async(data)=>{
    return await commonAPI("POST",`${BASEURL}login/`,data,"")
 }
+

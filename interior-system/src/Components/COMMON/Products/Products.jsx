@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import chair from '../../../Assets/chairs.jpg'
 // import door from '../../../Assets/door.jpg'
 // import pairChair from '../../../Assets/vintage chairs.jpg'
@@ -9,7 +9,10 @@ import { Link } from "react-router-dom";
 
 
 function Products() {
-  
+ 
+
+    
+
   return (
     <>
      <div className="align-item-center justify-content-center mt-5 mb-5">

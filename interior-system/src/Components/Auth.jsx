@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
-import { loginAPI, registerAPI } from "./Services/allApis";
+import { loginAPI } from "./Services/allApis";
 import axios from "axios";
 
 

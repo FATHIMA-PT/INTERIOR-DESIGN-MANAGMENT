@@ -30,13 +30,15 @@ function Auth({ register }) {
         setUserData({username:"",email: "",
         password: "",
         user_type: ""})
-        navigate('/login')
+        navigate('/')
       } catch (error) {
         console.log(error);
       }
       // if(response.status==200)
     }
   };
+  
+ 
 
   // login
   const handleLogin = async (e) => {
@@ -66,9 +68,9 @@ function Auth({ register }) {
     // }
     const response= await loginAPI(userData)
     console.log(response);
-    if(response.status == 200){
-      localStorage.setItem("token",response.data.token)
-      navigate('/')
+    if(response.status === 200){
+      localStorage.setItem("token",response.data.access)
+      navigate('/home-page')
     }
     else{
       alert("Incorrect Username and Password")
@@ -167,7 +169,7 @@ function Auth({ register }) {
                       </Button>
                       <p className="text-dark mt-3">
                         Already have an account?{" "}
-                        <Link to={"/login"}>Login Here</Link>
+                        <Link to={"/"}>Login Here</Link>
                       </p>
                     </div>
                   ) : (

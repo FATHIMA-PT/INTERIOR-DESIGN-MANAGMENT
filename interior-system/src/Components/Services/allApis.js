@@ -11,3 +11,6 @@ export const loginAPI = async(data)=>{
    return await commonAPI("POST",`${BASEURL}login/`,data,"")
 }
 
+export const productlistAPI = async(header)=>{
+    return await commonAPI("GET",`${BASEURL}productlist/`,"",header)
+ }

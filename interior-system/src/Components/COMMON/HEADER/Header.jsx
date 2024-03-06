@@ -1,9 +1,24 @@
 
 import React from 'react'
 import './Header.css'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
 function Header() {
+    
+  const location=useLocation().pathname
+  const isLogin = location === '/'
+  const isRegister = location === '/register'
+  const isProducts = location === '/products'
+  
+  
+  const handleLogout = () => {
+    // Clear the local storage
+    localStorage.clear();
+
+    // You may also want to redirect the user to the login page or perform any other necessary actions
+    // Example: window.location.href = '/login';
+  };
+
     return (
         <div>
             {/* Header */}
@@ -16,14 +31,23 @@ function Header() {
 
                 {/* Navigation links */}
                 <nav>
-                    <ul>
-                        <li><Link to={'/'} className='nav-links'>Home</Link></li>
-                        <li><Link to={'/home'} className='nav-links'>Services</Link></li>
-                        <li><Link to={'products'} className='nav-links'>Products</Link></li>
-                        <li><Link to={'/gallery'} className='nav-links'>Gallery</Link></li>
-                        <li><Link to={'/contact-us'} className='nav-links'>Contact Us</Link></li>
-                        <li><Link to={'/about-us'} className='nav-links'>About Us</Link></li>
-                    </ul>
+                {
+                    isProducts ? <ul style={{display: isLogin || isRegister ? 'none' : ''}}>
+                    <li><Link to={'/wishlist'} className='nav-links'>Wishlist</Link></li>
+                    <li><Link to={'/cart'} className='nav-links'>Cart</Link></li>
+
+                    <li><Link to={'/'}  onClick={handleLogout} className='nav-links'>Logout</Link></li>
+                </ul> : 
+                <ul style={{display: isLogin || isRegister ? 'none' : ''}}>
+                <li><Link to={'/home-page'} className='nav-links'>Home</Link></li>
+                <li><Link to={'/home'} className='nav-links'>Services</Link></li>
+                <li><Link to={'products'} className='nav-links'>Products</Link></li>
+                <li><Link to={'/gallery'} className='nav-links'>Gallery</Link></li>
+                <li><Link to={'/contact-us'} className='nav-links'>Contact Us</Link></li>
+                <li><Link to={'/about-us'} className='nav-links'>About Us</Link></li>
+                <li><Link to={'/'}  onClick={handleLogout} className='nav-links'>Logout</Link></li>
+            </ul>
+                }
 
                 </nav>
 

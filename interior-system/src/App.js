@@ -17,19 +17,18 @@ import Wishlist from './Components/COMMON/Wishlist';
 function App() {
   return (
     <>
-    <Header/>
-    <Routes>
-      <Route path='/' element={<Home_page/>} />
-
-      <Route path='/login' element={<Auth/>}/>
-        <Route path='/register' element={<Auth register/>}/>
-        <Route path='/home' element={<Home/>}/>
-        <Route path='/gallery' element={<Gallery/>}/>
-        <Route path='/contact-us' element={<Contact/>}/>
-        <Route path='/about-us' element={<About/>}/>
-        <Route path='/products' element={<Products/>}/>
-        <Route path='/cart' element={<Cart/>}/>
-        <Route path='/wishlist' element={<Wishlist/>}/>
+      <Header />
+      <Routes>
+        <Route path='/' element={<Auth />} />
+        <Route path='/home-page' element={<Home_page />} />
+        <Route path='/register' element={<Auth register />} />
+        <Route path='/home' element={<Home />} />
+        <Route path='/gallery' element={<Gallery />} />
+        <Route path='/contact-us' element={<Contact />} />
+        <Route path='/about-us' element={<About />} />
+        <Route path='/products' element={<Products />} />
+        <Route path='/cart' element={<Cart />} />
+        <Route path='/wishlist' element={<Wishlist />} />
 
 
 
@@ -38,7 +37,6 @@ function App() {
     </Routes>
     <Footer/>
 
-     
     </>
   );
 }

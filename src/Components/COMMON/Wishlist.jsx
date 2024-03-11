@@ -1,11 +1,14 @@
 import React from 'react'
 
-function AddProduct() {
+function Wishlist() {
   return (
     <div>
-      
+   
+
     </div>
+    
   )
 }
 
-export default AddProduct
+export default Wishlist
+

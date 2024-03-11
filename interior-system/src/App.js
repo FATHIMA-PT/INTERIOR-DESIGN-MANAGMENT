@@ -13,6 +13,10 @@ import About from './Components/COMMON/About-Us/About';
 import Products from './Components/COMMON/Products/Products';
 import Cart from './Components/COMMON/Cart';
 import Wishlist from './Components/COMMON/Wishlist';
+import DiningRoom from './Components/DINING_ROOM/DiningRoom';
+import HomeCategory from './Components/HOME_CATEGORY/HomeCategory';
+import Office from './Components/OFFICE/Office';
+import Office_category from './Components/OFFICE_CATEGORY/Office_category';
 
 function App() {
   return (
@@ -29,10 +33,10 @@ function App() {
         <Route path='/products' element={<Products />} />
         <Route path='/cart' element={<Cart />} />
         <Route path='/wishlist' element={<Wishlist />} />
-
-
-
-
+        {/* <Route path='/diningroom/:id' element={<DiningRoom/>} /> */}
+        <Route path='/homecategory/:id' element={<HomeCategory/>} />
+        <Route path='/office' element={<Office/>} />
+        <Route path='/officecategory/:id' element={<Office_category/>} />
       </Routes>
       <Footer />
 

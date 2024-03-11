@@ -1,5 +1,10 @@
 import React from "react";
 import { Button, Card } from "react-bootstrap";
+import bedroom from '../Assets/bedroom.jpg'
+import kidsroom from '../Assets/kidsroom.jpg'
+import bathroom from '../Assets/bathroom.jpg'
+import { Link } from "react-router-dom";
+
 
 function Home() {
   return (
@@ -9,6 +14,7 @@ function Home() {
           HOME INTERIOR DESIGN{" "}
         </h2>
         
+        {/* visiting room */}
           <div className="  container   justify-content-around mt-5 ">
             <div className="row" >
               <div className="col-4">
@@ -30,10 +36,12 @@ function Home() {
                       comforts of home: the best mattress, a deep cozy duvet,
                       the tactile throws and plenty of plush towels.
                     </Card.Text>
-                    <Button  className="btn btn-outline-warning text-light">More</Button>
+                    <Button  className="btn btn-outline-warning text-light"><Link to={`/homecategory/visitingroom`} className="text-light" style={{textDecoration:"none"}}>More</Link></Button>
                   </Card.Body>
                 </Card>
               </div>
+
+              {/* diningb room */}
               <div className="col-4">
                 <Card  className="">
                   <Card.Img 
@@ -52,10 +60,12 @@ function Home() {
                       here's your daily dose of dining room interior design
                       inspiration to start your home interior journey today.
                     </Card.Text>
-                    <Button  className="btn btn-outline-warning text-light">More</Button>
+                    <Button  className="btn btn-outline-warning text-light"><Link to={`/homecategory/diningroom`} className="text-light" style={{textDecoration:"none"}}>More</Link></Button>
                   </Card.Body>
                 </Card>
               </div>
+
+              {/* kitchen */}
               <div className="col-4">
                 <Card  className=""  style={{height:'575px'}}>
                   <Card.Img
@@ -74,10 +84,83 @@ function Home() {
                       under cabinet lighting, while the materials used for
                       cabinet finishes.
                     </Card.Text>
-                    <Button  className="btn btn-outline-warning text-light">More</Button>
+                    <Button  className="btn btn-outline-warning text-light"><Link to={`/homecategory/kitchen`} className="text-light" style={{textDecoration:"none"}}>More</Link></Button>
                   </Card.Body>
                 </Card>
               </div>
+
+            {/* bed room */}
+              <div className="col-4">
+                <Card  className=""  style={{height:'575px'}}>
+                  <Card.Img
+                    variant="top"
+                    className="img img-fluid p-3"
+                    style={{ height: "265px" }}
+                    src={bedroom}
+                  />
+                  <Card.Body style={{textAlign:"justify"}}>
+                    <Card.Title className=" text-center">Bed Room</Card.Title>
+                    <Card.Text>
+                      The modern home kitchen design in India is more seamless
+                      and smooth. You see more in-built appliances, the cabinets
+                      have profile handles or are push-to-touch. You see
+                      lighting divided into ambient and task lights, typically
+                      under cabinet lighting, while the materials used for
+                      cabinet finishes.
+                    </Card.Text>
+                    <Button  className="btn btn-outline-warning text-light"><Link to={`/homecategory/bedroom`} className="text-light" style={{textDecoration:"none"}}>More</Link></Button>
+                  </Card.Body>
+                </Card>
+              </div>
+
+              {/* kidsroom */}
+              <div className="col-4">
+                <Card  className=""  style={{height:'575px'}}>
+                  <Card.Img
+                    variant="top"
+                    className="img img-fluid p-3"
+                    style={{ height: "265px" }}
+                    src={kidsroom}
+                  />
+                  <Card.Body style={{textAlign:"justify"}}>
+                    <Card.Title className=" text-center">Kids Room</Card.Title>
+                    <Card.Text>
+                      The modern home kitchen design in India is more seamless
+                      and smooth. You see more in-built appliances, the cabinets
+                      have profile handles or are push-to-touch. You see
+                      lighting divided into ambient and task lights, typically
+                      under cabinet lighting, while the materials used for
+                      cabinet finishes.
+                    </Card.Text>
+                    <Button  className="btn btn-outline-warning text-light"><Link to={`/homecategory/kidsroom`} className="text-light" style={{textDecoration:"none"}}>More</Link></Button>
+                  </Card.Body>
+                </Card>
+              </div>
+
+               {/* bathroom */}
+               <div className="col-4">
+                <Card  className=""  style={{height:'575px'}}>
+                  <Card.Img
+                    variant="top"
+                    className="img img-fluid p-3"
+                    style={{ height: "265px" }}
+                    src={bathroom}
+                  />
+                  <Card.Body style={{textAlign:"justify"}}>
+                    <Card.Title className=" text-center">Bath Room</Card.Title>
+                    <Card.Text>
+                      The modern home kitchen design in India is more seamless
+                      and smooth. You see more in-built appliances, the cabinets
+                      have profile handles or are push-to-touch. You see
+                      lighting divided into ambient and task lights, typically
+                      under cabinet lighting, while the materials used for
+                      cabinet finishes.
+                    </Card.Text>
+                    <Button  className="btn btn-outline-warning text-light"><Link to={`/homecategory/bathroom`} className="text-light" style={{textDecoration:"none"}}>More</Link></Button>
+                  </Card.Body>
+                </Card>
+              </div>
+
             </div>
            
           </div>

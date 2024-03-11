@@ -35,12 +35,19 @@ function Header() {
                     isProducts ? <ul style={{display: isLogin || isRegister ? 'none' : ''}}>
                     <li><Link to={'/wishlist'} className='nav-links'>Wishlist</Link></li>
                     <li><Link to={'/cart'} className='nav-links'>Cart</Link></li>
-
                     <li><Link to={'/'}  onClick={handleLogout} className='nav-links'>Logout</Link></li>
                 </ul> : 
                 <ul style={{display: isLogin || isRegister ? 'none' : ''}}>
                 <li><Link to={'/home-page'} className='nav-links'>Home</Link></li>
-                <li><Link to={'/home'} className='nav-links'>Services</Link></li>
+
+                <li>
+                    <Link className='nav-links'>Services</Link>
+                    <ul className='dropdown'>
+                        <li><Link to={'/home'} className='dropdown-links'>Home</Link></li>
+                        <li><Link to={'/office'} className='dropdown-links'>Office</Link></li>
+                    </ul>
+                </li>
+                
                 <li><Link to={'products'} className='nav-links'>Products</Link></li>
                 <li><Link to={'/gallery'} className='nav-links'>Gallery</Link></li>
                 <li><Link to={'/contact-us'} className='nav-links'>Contact Us</Link></li>

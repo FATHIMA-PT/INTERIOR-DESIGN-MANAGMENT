@@ -40,6 +40,7 @@ function App() {
         <Route path='/officecategory/:id' element={<Office_category/>} />
         <Route path='booking' element={<Booking/>} />
 
+
       </Routes>
       <Footer />
 

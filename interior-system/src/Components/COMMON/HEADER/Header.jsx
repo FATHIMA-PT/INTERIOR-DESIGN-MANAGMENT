@@ -33,8 +33,10 @@ function Header() {
                 <nav>
                 {
                     isProducts ? <ul style={{display: isLogin || isRegister ? 'none' : ''}}>
-                    <li><Link to={'/wishlist'} className='nav-links'>Wishlist</Link></li>
-                    <li><Link to={'/cart'} className='nav-links'>Cart</Link></li>
+                    <li><Link to={'/wishlist'} className='nav-links'>Wishlist <span class="badge bg-light text-warning ms-1 rounded-pill">0</span>
+ </Link></li>
+                    <li><Link to={'/cart'} className='nav-links'>Cart<span class="badge bg-light text-warning ms-1 rounded-pill">0</span>
+</Link></li>
                     <li><Link to={'/'}  onClick={handleLogout} className='nav-links'>Logout</Link></li>
                 </ul> : 
                 <ul style={{display: isLogin || isRegister ? 'none' : ''}}>

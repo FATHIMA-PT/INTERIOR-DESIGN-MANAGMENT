@@ -1,6 +1,8 @@
 import { TextField } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
+import { useParams } from "react-router-dom";
+import { homebookingAPI, homesingleviewAPI } from "../../Services/allApis";
 
 function Booking() {
     const [num1,setNum1] = useState();
@@ -10,6 +12,23 @@ function Booking() {
     function handleClick(){
         setTotal(Number(num1) *  Number(num2));
     }
+
+
+    const {id}=useParams()
+    console.log(id)
+
+    const token=localStorage.getItem("token")
+    const headers={
+      Authorization:`Bearer ${token}`
+    }
+    const handleviewitem=async()=>{
+      const response=await homesingleviewAPI(id,headers)
+      console.log(response);
+    }
+
+    useEffect(()=>{
+      handleviewitem()
+    },[])
 
 
   return (

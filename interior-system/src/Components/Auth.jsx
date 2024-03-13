@@ -43,7 +43,20 @@ function Auth({ register }) {
   // login
   const handleLogin = async (e) => {
     e.preventDefault();
-    // const { username, password } = userData;
+   
+    const response= await loginAPI(userData)
+    console.log(response);
+    if(response.status === 200){
+      localStorage.setItem("token",response.data.access)
+      navigate('/home-page')
+    }
+    else{
+      alert("Incorrect Username and Password")
+    }
+
+  };
+
+   // const { username, password } = userData;
     // if ( !username || !password  ) {
     //   alert("Please fill the form completely");
     // } else {
@@ -66,17 +79,6 @@ function Auth({ register }) {
     //   }
     //   // if(response.status==200)
     // }
-    const response= await loginAPI(userData)
-    console.log(response);
-    if(response.status === 200){
-      localStorage.setItem("token",response.data.access)
-      navigate('/home-page')
-    }
-    else{
-      alert("Incorrect Username and Password")
-    }
-
-  };
 
   return (
     <div

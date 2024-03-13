@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Button, Card } from 'react-bootstrap'
 import { diningroomlistAPI } from '../Services/allApis'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 
 function HomeCategory() {
 
@@ -59,7 +59,7 @@ function HomeCategory() {
                         {i.Description}
                       </Card.Text>
                       <Card.Text>Price:{i.price} per sq. ft.</Card.Text>
-                      <Button className="btn btn-outline-warning text-light">Book Now</Button>
+                      <Button className="btn btn-outline-warning text-light"><Link to={`/booking/${i.id}`} className="text-light" style={{textDecoration:"none"}}>Book Now</Link></Button>
                     </Card.Body>
                   </Card>
 

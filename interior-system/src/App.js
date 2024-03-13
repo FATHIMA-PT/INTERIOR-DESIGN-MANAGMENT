@@ -18,6 +18,8 @@ import HomeCategory from './Components/HOME_CATEGORY/HomeCategory';
 import Office from './Components/OFFICE/Office';
 import Office_category from './Components/OFFICE_CATEGORY/Office_category';
 import Booking from './Components/COMMON/Booking/Booking';
+import Purchasing from './Components/PURCHASING/Purchasing';
+import Billing from './Components/BILLING/Billing';
 
 function App() {
   return (
@@ -38,7 +40,9 @@ function App() {
         <Route path='/homecategory/:id' element={<HomeCategory/>} />
         <Route path='/office' element={<Office/>} />
         <Route path='/officecategory/:id' element={<Office_category/>} />
-        <Route path='booking' element={<Booking/>} />
+        <Route path='/booking/:id' element={<Booking/>} />
+        <Route path='/purchase' element={<Purchasing/>} />
+        <Route path='/billing' element={<Billing/>} />
 
       </Routes>
       <Footer />

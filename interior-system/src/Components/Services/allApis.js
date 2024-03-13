@@ -26,4 +26,9 @@ export const productlistAPI = async(header)=>{
    return await commonAPI("GET",`${BASEURL}officecategory/${id}`,{},header)
 }
 
+//  home booking -pending
+export const homesingleviewAPI = async(id,header)=>{
+   return await commonAPI("GET",`${BASEURL}homecategory/${id}`,{},header)
+}
+
  

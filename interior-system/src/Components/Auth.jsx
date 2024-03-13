@@ -24,7 +24,7 @@ function Auth({ register }) {
     } else {
       // api call
       try {
-        const response = await axios.post("http://127.0.0.1:8000/register/",userData);
+        const response = await axios.post("http://127.0.0.1:8000/register/",userData,{});
         console.log(response);
         alert("Registred Succes")
         setUserData({username:"",email: "",

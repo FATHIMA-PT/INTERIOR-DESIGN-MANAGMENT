@@ -44,6 +44,7 @@ function App() {
         <Route path='/purchase' element={<Purchasing/>} />
         <Route path='/billing' element={<Billing/>} />
 
+
       </Routes>
       <Footer />
 

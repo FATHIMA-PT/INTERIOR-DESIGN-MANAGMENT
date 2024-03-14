@@ -31,4 +31,9 @@ export const homesingleviewAPI = async(id,header)=>{
    return await commonAPI("GET",`${BASEURL}homecategory/${id}`,{},header)
 }
 
+// add to cart
+export const addtocartAPI = async(id,header)=>{
+   return await commonAPI("POST",`${BASEURL}AddToCart/${id}`,header,"")
+}
+
  

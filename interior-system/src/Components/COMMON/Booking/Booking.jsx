@@ -1,7 +1,7 @@
 import { TextField } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { homebookingAPI, homesingleviewAPI } from "../../Services/allApis";
 
 function Booking() {
@@ -117,7 +117,8 @@ function Booking() {
                   variant="outlined"
                   className="btn btn-success text-dark me-4"
                 >
-                  BOOK NOW
+                  <Link to={`/thankyou`} className="text-light" style={{textDecoration:"none"}}> BOOK NOW</Link>
+                 
                 </Button>
               </div>
             </form>

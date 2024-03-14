@@ -9,6 +9,7 @@ function Header() {
   const isLogin = location === '/'
   const isRegister = location === '/register'
   const isProducts = location === '/products'
+  const isAgentLogin=location === '/agentloginprofile'
   
   
   const handleLogout = () => {
@@ -30,35 +31,52 @@ function Header() {
                 </div>
 
                 {/* Navigation links */}
-                <nav>
-                {
-                    isProducts ? <ul style={{display: isLogin || isRegister ? 'none' : ''}}>
-                    <li><Link to={'/wishlist'} className='nav-links'>Wishlist <span class="badge bg-light text-warning ms-1 rounded-pill">0</span>
- </Link></li>
-                    <li><Link to={'/cart'} className='nav-links'>Cart<span class="badge bg-light text-warning ms-1 rounded-pill">0</span>
-</Link></li>
-                    <li><Link to={'/'}  onClick={handleLogout} className='nav-links'>Logout</Link></li>
-                </ul> : 
-                <ul style={{display: isLogin || isRegister ? 'none' : ''}}>
-                <li><Link to={'/home-page'} className='nav-links'>Home</Link></li>
+                 
+                    <nav>
+                    
+                     {
+                        isAgentLogin?
+                        <ul style={{display: isLogin || isRegister ? 'none' : ''}}>
+                            <li><Link to={'/agentloginprofile'} className='nav-links'>Home</Link></li>
+                            <li><Link to={'/contact-us'} className='nav-links'>Contact Us</Link></li>
+                            <li><Link to={'/about-us'} className='nav-links'>About Us</Link></li>
+                            <li><Link to={'/'}  onClick={handleLogout} className='nav-links'>Logout</Link></li>
+                        </ul>
+                        :
+                        
+                        <>
+                        {
+                        isProducts ?
+                            <ul style={{display: isLogin || isRegister ? 'none' : ''}}>
+                                <li><Link to={'/wishlist'} className='nav-links'>Wishlist <span class="badge bg-light text-warning ms-1 rounded-pill">0</span></Link></li>
+                                <li><Link to={'/cart'} className='nav-links'>Cart<span class="badge bg-light text-warning ms-1 rounded-pill">0</span></Link></li>
+                                <li><Link to={'/'}  onClick={handleLogout} className='nav-links'>Logout</Link></li>
+                            </ul>
+                            : 
+                            <ul style={{display: isLogin || isRegister ? 'none' : ''}}>
+                            <li><Link to={'/home-page'} className='nav-links'>Home</Link></li>
+                            <li>
+                                <Link className='nav-links'>Services</Link>
+                                <ul className='dropdown'>
+                                    <li><Link to={'/home'} className='dropdown-links'>Home</Link></li>
+                                    <li><Link to={'/office'} className='dropdown-links'>Office</Link></li>
+                                </ul>
+                            </li>
+                            <li><Link to={'products'} className='nav-links'>Products</Link></li>
+                            <li><Link to={'/gallery'} className='nav-links'>Gallery</Link></li>
+                            <li><Link to={'/contact-us'} className='nav-links'>Contact Us</Link></li>
+                            <li><Link to={'/about-us'} className='nav-links'>About Us</Link></li>
+                            <li><Link to={'/'}  onClick={handleLogout} className='nav-links'>Logout</Link></li>
+                        </ul>
 
-                <li>
-                    <Link className='nav-links'>Services</Link>
-                    <ul className='dropdown'>
-                        <li><Link to={'/home'} className='dropdown-links'>Home</Link></li>
-                        <li><Link to={'/office'} className='dropdown-links'>Office</Link></li>
-                    </ul>
-                </li>
-                
-                <li><Link to={'products'} className='nav-links'>Products</Link></li>
-                <li><Link to={'/gallery'} className='nav-links'>Gallery</Link></li>
-                <li><Link to={'/contact-us'} className='nav-links'>Contact Us</Link></li>
-                <li><Link to={'/about-us'} className='nav-links'>About Us</Link></li>
-                <li><Link to={'/'}  onClick={handleLogout} className='nav-links'>Logout</Link></li>
-            </ul>
-                }
+                      
+
+                    }
+                        </>
+                       }
 
                 </nav>
+                 
 
             </header>
         </div>

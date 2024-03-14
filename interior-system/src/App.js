@@ -20,6 +20,8 @@ import Office_category from './Components/OFFICE_CATEGORY/Office_category';
 import Booking from './Components/COMMON/Booking/Booking';
 import Purchasing from './Components/PURCHASING/Purchasing';
 import Billing from './Components/BILLING/Billing';
+import Thankyou from './Components/THANKYOU/Thankyou';
+import Agents from './Components/AGENTS/Agents';
 
 function App() {
   return (
@@ -43,7 +45,10 @@ function App() {
         <Route path='/booking/:id' element={<Booking/>} />
         <Route path='/purchase' element={<Purchasing/>} />
         <Route path='/billing' element={<Billing/>} />
+        <Route path='/thankyou' element={<Thankyou/>} />
 
+        {/* agent */}
+        <Route path='/agentloginprofile' element={<Agents/>} />
 
       </Routes>
       <Footer />

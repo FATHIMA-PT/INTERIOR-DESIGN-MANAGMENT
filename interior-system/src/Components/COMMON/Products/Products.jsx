@@ -41,22 +41,22 @@ function Products() {
                   </h5>
                 </Card.Text>
                 <div className="d-flex justify-content-between ">
-                  <Link to={"/wishlist"}>
+                  
                     <Button className="btn  mt-auto btn-light">
                       <i
                         className="fa-solid fa-heart text-danger"
                         style={{ fontSize: "30px" }}
                       ></i>
                     </Button>
-                  </Link>{" "}
-                  <Link to={"/cart"}>
+                  {" "}
+                
                     <Button className="btn  mt-auto  btn-light">
                       <i
                         className="fa-solid fa-cart-plus text-success "
                         style={{ fontSize: "30px" }}
                       ></i>
                     </Button>
-                  </Link>
+                 
                 </div>
               </Card.Body>
             </Card>

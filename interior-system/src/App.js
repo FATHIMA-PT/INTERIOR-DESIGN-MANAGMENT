@@ -13,7 +13,7 @@ import About from './Components/COMMON/About-Us/About';
 import Products from './Components/COMMON/Products/Products';
 import Cart from './Components/COMMON/Cart';
 import Wishlist from './Components/COMMON/Wishlist';
-import DiningRoom from './Components/DINING_ROOM/DiningRoom';
+// import DiningRoom from './Components/DINING_ROOM/DiningRoom';
 import HomeCategory from './Components/HOME_CATEGORY/HomeCategory';
 import Office from './Components/OFFICE/Office';
 import Office_category from './Components/OFFICE_CATEGORY/Office_category';
@@ -22,6 +22,9 @@ import Purchasing from './Components/PURCHASING/Purchasing';
 import Billing from './Components/BILLING/Billing';
 import Thankyou from './Components/THANKYOU/Thankyou';
 import Agents from './Components/AGENTS/Agents';
+import Payment from './Components/Payment/Payment';
+import AgentProductList from './Components/Agent Product List/AgentProductList';
+
 
 function App() {
   return (
@@ -38,6 +41,8 @@ function App() {
         <Route path='/products' element={<Products />} />
         <Route path='/cart' element={<Cart />} />
         <Route path='/wishlist' element={<Wishlist />} />
+        <Route path='/payment' element={<Payment details />} />
+
         {/* <Route path='/diningroom/:id' element={<DiningRoom/>} /> */}
         <Route path='/homecategory/:id' element={<HomeCategory/>} />
         <Route path='/office' element={<Office/>} />
@@ -49,6 +54,9 @@ function App() {
 
         {/* agent */}
         <Route path='/agentloginprofile' element={<Agents/>} />
+        <Route path='/agentproductlist' element={<AgentProductList/>} />
+
+
 
       </Routes>
       <Footer />

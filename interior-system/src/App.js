@@ -22,6 +22,8 @@ import Purchasing from './Components/PURCHASING/Purchasing';
 import Billing from './Components/BILLING/Billing';
 import Thankyou from './Components/THANKYOU/Thankyou';
 import Agents from './Components/AGENTS/Agents';
+import AgentBanner from './Components/AGENT_BANNER/AgentBanner';
+import AgentHomeContent from './Components/AGENT_HOME_CONTENT/AgentHomeContent';
 
 function App() {
   return (
@@ -49,6 +51,11 @@ function App() {
 
         {/* agent */}
         <Route path='/agentloginprofile' element={<Agents/>} />
+        <Route path='/agentbanner' element={<AgentBanner/>}/>
+        <Route path='/agenthomecontent' element={<AgentHomeContent/>}/>
+        {/* header */}
+        <Route path='/agentcontact-us' element={<Contact />} />
+        <Route path='/agentabout-us' element={<About />} />
 
       </Routes>
       <Footer />

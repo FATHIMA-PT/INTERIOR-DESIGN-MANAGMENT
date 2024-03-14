@@ -8,9 +8,16 @@ function Header() {
   const location=useLocation().pathname
   const isLogin = location === '/'
   const isRegister = location === '/register'
+
+//   product
   const isProducts = location === '/products'
+  const isWishlist=location==='/wishlist'
+  const isCart=location==='/cart'
+
+  //   agent
   const isAgentLogin=location === '/agentloginprofile'
-  
+  const isAgentcontactus=location === '/agentcontact-us'
+  const isAgentaboutus=location === '/agentabout-us'
   
   const handleLogout = () => {
     // Clear the local storage
@@ -27,7 +34,12 @@ function Header() {
                 {/* logo */}
                 <div className="logo">
                     <img className='logo-image' src="https://i.pinimg.com/564x/67/f8/0d/67f80dfb909022631a1a1780c4efe870.jpg" alt="" />
-                    <h6>Interior Harmony</h6>
+                    {
+                        isLogin || isRegister ?
+                            <h6>Interior Harmony</h6>
+                            :
+                            <Link to={'/home-page'} style={{textDecoration:'none'}}><h6>Interior Harmony</h6></Link>
+                    }
                 </div>
 
                 {/* Navigation links */}
@@ -35,19 +47,21 @@ function Header() {
                     <nav>
                     
                      {
-                        isAgentLogin?
+                        isAgentLogin || isAgentaboutus || isAgentcontactus ?
                         <ul style={{display: isLogin || isRegister ? 'none' : ''}}>
                             <li><Link to={'/agentloginprofile'} className='nav-links'>Home</Link></li>
-                            <li><Link to={'/contact-us'} className='nav-links'>Contact Us</Link></li>
-                            <li><Link to={'/about-us'} className='nav-links'>About Us</Link></li>
+                            <li><Link to={'/agentloginprofile'} className='nav-links'>Products</Link></li>
+                            <li><Link to={'/agentcontact-us'} className='nav-links'>Contact Us</Link></li>
+                            <li><Link to={'/agentabout-us'} className='nav-links'>About Us</Link></li>
                             <li><Link to={'/'}  onClick={handleLogout} className='nav-links'>Logout</Link></li>
                         </ul>
                         :
                         
                         <>
                         {
-                        isProducts ?
+                        isProducts || isWishlist || isCart ?
                             <ul style={{display: isLogin || isRegister ? 'none' : ''}}>
+                                <li><Link to={'products'} className='nav-links'>Products</Link></li>
                                 <li><Link to={'/wishlist'} className='nav-links'>Wishlist <span class="badge bg-light text-warning ms-1 rounded-pill">0</span></Link></li>
                                 <li><Link to={'/cart'} className='nav-links'>Cart<span class="badge bg-light text-warning ms-1 rounded-pill">0</span></Link></li>
                                 <li><Link to={'/'}  onClick={handleLogout} className='nav-links'>Logout</Link></li>

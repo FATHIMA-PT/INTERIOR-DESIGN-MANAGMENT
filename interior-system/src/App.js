@@ -25,6 +25,8 @@ import Agents from './Components/AGENTS/Agents';
 import Payment from './Components/Payment/Payment';
 import AgentProductList from './Components/Agent Product List/AgentProductList';
 
+import AgentBanner from './Components/AGENT_BANNER/AgentBanner';
+import AgentHomeContent from './Components/AGENT_HOME_CONTENT/AgentHomeContent';
 
 function App() {
   return (
@@ -57,6 +59,11 @@ function App() {
         <Route path='/agentproductlist' element={<AgentProductList/>} />
 
 
+        <Route path='/agentbanner' element={<AgentBanner/>}/>
+        <Route path='/agenthomecontent' element={<AgentHomeContent/>}/>
+        {/* header */}
+        <Route path='/agentcontact-us' element={<Contact />} />
+        <Route path='/agentabout-us' element={<About />} />
 
       </Routes>
       <Footer />

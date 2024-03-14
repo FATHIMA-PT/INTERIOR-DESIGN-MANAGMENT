@@ -48,7 +48,12 @@ function Auth({ register }) {
     console.log(response);
     if(response.status === 200){
       localStorage.setItem("token",response.data.access)
-      navigate('/home-page')
+      if(response.data.user_type=="Customer"){
+        navigate('/home-page')
+      }
+      else{
+        navigate('/agentloginprofile')
+      }
     }
     else{
       alert("Incorrect Username and Password")

@@ -18,6 +18,7 @@ function Header() {
   const isAgentLogin=location === '/agentloginprofile'
   const isAgentcontactus=location === '/agentcontact-us'
   const isAgentaboutus=location === '/agentabout-us'
+  const isAgentproductlist = location === '/agentproductlist'
   
   const handleLogout = () => {
     // Clear the local storage
@@ -47,10 +48,10 @@ function Header() {
                     <nav>
                     
                      {
-                        isAgentLogin || isAgentaboutus || isAgentcontactus ?
+                        isAgentLogin || isAgentaboutus || isAgentcontactus || isAgentproductlist ?
                         <ul style={{display: isLogin || isRegister ? 'none' : ''}}>
                             <li><Link to={'/agentloginprofile'} className='nav-links'>Home</Link></li>
-                            <li><Link to={'/agentloginprofile'} className='nav-links'>Products</Link></li>
+                            <li><Link to={'/agentproductlist'} className='nav-links'>Products</Link></li>
                             <li><Link to={'/agentcontact-us'} className='nav-links'>Contact Us</Link></li>
                             <li><Link to={'/agentabout-us'} className='nav-links'>About Us</Link></li>
                             <li><Link to={'/'}  onClick={handleLogout} className='nav-links'>Logout</Link></li>

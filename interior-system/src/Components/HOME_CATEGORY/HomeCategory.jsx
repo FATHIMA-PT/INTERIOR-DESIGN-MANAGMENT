@@ -6,6 +6,7 @@ import { Link, useParams } from 'react-router-dom'
 function HomeCategory() {
 
   const { id } = useParams()
+  
 
   console.log(id);
   useEffect(() => {
@@ -44,7 +45,7 @@ function HomeCategory() {
 
 
 
-                  <Card className="" style={{ height: '575px' }}>
+                  <Card className="" style={{ height: '650px' }}>
                     <Card.Img
                       variant="top"
                       className="img img-fluid p-3"
@@ -59,7 +60,7 @@ function HomeCategory() {
                         {i.Description}
                       </Card.Text>
                       <Card.Text>Price:{i.price} per sq. ft.</Card.Text>
-                      <Button className="btn btn-outline-warning text-light"><Link to={`/booking/${i.id}`} className="text-light" style={{textDecoration:"none"}}>Book Now</Link></Button>
+                      <Button className="btn btn-outline-warning text-light"><Link to={`/booking/${i.price}/${i.Name}`} className="text-light" style={{textDecoration:"none"}}>Book Now</Link></Button>
                     </Card.Body>
                   </Card>
 

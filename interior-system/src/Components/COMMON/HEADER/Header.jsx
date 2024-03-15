@@ -23,6 +23,7 @@ function Header({count}) {
   const isAgentLogin=location === '/agentloginprofile'
   const isAgentcontactus=location === '/agentcontact-us'
   const isAgentaboutus=location === '/agentabout-us'
+  const isAgentproductlist = location === '/agentproductlist'
   
   const handleLogout = () => {
     // Clear the local storage
@@ -52,7 +53,7 @@ function Header({count}) {
                     <nav>
                     
                      {
-                        isAgentLogin || isAgentaboutus || isAgentcontactus ?
+                        isAgentLogin || isAgentaboutus || isAgentcontactus || isAgentproductlist ?
                         <ul style={{display: isLogin || isRegister ? 'none' : ''}}>
                             <li><Link to={'/agentloginprofile'} className='nav-links'>Home</Link></li>
                             <li><Link to={'/agentproductlist'} className='nav-links'>Products</Link></li>

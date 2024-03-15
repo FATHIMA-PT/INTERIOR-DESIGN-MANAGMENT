@@ -5,56 +5,64 @@ import { Link, useParams } from "react-router-dom";
 import { homebookingAPI, homesingleviewAPI } from "../../Services/allApis";
 
 function Booking() {
-    const [num1,setNum1] = useState();
-    const [num2,setNum2] = useState();
-    const [total,setTotal] = useState();
+  const { id } = useParams()
+  const { name } = useParams()
+  const [num1, setNum1] = useState();
+  const [num2, setNum2] = useState();
+  const [total, setTotal] = useState();
 
-    function handleClick(){
-        setTotal(Number(num1) *  Number(num2));
-    }
+  // set id
+  // const [designid,setDesignid]=useState();
+
+ const handleClick=() =>{
+    setTotal(Number(num1) * Number(num2));
+  }
+  console.log(id)
+  // console.log(designid);
 
 
-    const {id}=useParams()
-    console.log(id)
+  console.log(name);
 
-    const token=localStorage.getItem("token")
-    const headers={
-      Authorization:`Bearer ${token}`
-    }
-    const handleviewitem=async()=>{
-      const response=await homesingleviewAPI(id,headers)
-      console.log(response);
-    }
+  const token = localStorage.getItem("token")
+  const headers = {
+    Authorization: `Bearer ${token}`
+  }
+  // const handleviewitem = async () => {
+  //   const response = await homesingleviewAPI(id, headers)
+  //   console.log(response);
+  // }
 
-    useEffect(()=>{
-      handleviewitem()
-    },[])
+  // useEffect(() => {
+  //   handleviewitem()
+  // }, [])
 
 
   return (
     <>
-      <div className="align-items-center justift-content-center " style={{marginTop:'100px'}}>
+      <div className="align-items-center justift-content-center " style={{ marginTop: '100px' }}>
         <div className="row">
           <div className="col-lg-4 mt-5 border rounded ms-5 mb-5 shadow-lg">
             <div className="mb-4 mt-5 d-flex justify-content-between align-items-center ">
-            <TextField
-               onChange={(e)=>{
-                setNum1(e.target.value)
-               }}
-               className="mt-3"
-               id="outlined-basic"
-               label="Sq.ft"
-               variant="outlined"
-             />
+              <TextField
+                onChange={(e) => {
+                  setNum1(e.target.value)
+                }}
+                className="mt-3"
+                id="outlined-basic"
+                label="Sq.ft"
+                variant="outlined"
+                value={id}
+              />
 
               <TextField
-                onChange={(e)=>{
-                    setNum2(e.target.value)
-                   }}
+                onChange={(e) => {
+                  setNum2(e.target.value)
+                }}
                 className="mt-3"
                 id="outlined-basic"
                 label="Please Add Sq.ft"
                 variant="outlined"
+                
               />
             </div>
 
@@ -67,12 +75,12 @@ function Booking() {
               </Button>
             </div>
             <div className="mb-4 mt-5 d-flex justify-content-center align-items-center  ">
-            <TextField
+              <TextField
                 value={total}
                 className="mt-3"
                 id="outlined-basic"
                 label=" "
-                
+
               />
             </div>
           </div>
@@ -117,8 +125,8 @@ function Booking() {
                   variant="outlined"
                   className="btn btn-success text-dark me-4"
                 >
-                  <Link to={`/thankyou`} className="text-light" style={{textDecoration:"none"}}> BOOK NOW</Link>
-                 
+                  <Link to={`/thankyou`} className="text-light" style={{ textDecoration: "none" }}> BOOK NOW</Link>
+
                 </Button>
               </div>
             </form>

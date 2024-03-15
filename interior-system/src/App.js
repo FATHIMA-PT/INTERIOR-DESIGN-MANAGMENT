@@ -49,7 +49,7 @@ function App() {
         <Route path='/homecategory/:id' element={<HomeCategory/>} />
         <Route path='/office' element={<Office/>} />
         <Route path='/officecategory/:id' element={<Office_category/>} />
-        <Route path='/booking/:id' element={<Booking/>} />
+        <Route path='/booking/:id/:name' element={<Booking/>} />
         <Route path='/purchase' element={<Purchasing/>} />
         <Route path='/billing' element={<Billing/>} />
         <Route path='/thankyou' element={<Thankyou/>} />

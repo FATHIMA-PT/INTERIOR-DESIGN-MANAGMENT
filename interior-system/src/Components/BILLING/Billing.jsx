@@ -43,7 +43,7 @@ function Billing() {
                         <h3 className='text-success fw-bolder'>Cart Summary</h3>
                         <h5>Total Products : <span></span> </h5>
                         <h4>Total : $ <span className='text-danger fw-bolder fs-3'></span></h4>
-                        <button className='btn btn-success mt-3 w-50'><Link to={`/thankyou`} className="text-light" style={{textDecoration:"none"}}>Pay Now</Link></button>
+                        <button className='btn btn-success mt-3 w-50'><Link to={`/payment`} className="text-light" style={{textDecoration:"none"}}>Pay Now</Link></button>
                     </div>
                 </div>
             </>

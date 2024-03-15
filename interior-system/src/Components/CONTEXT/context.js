@@ -1,22 +1,51 @@
-import { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from 'react';
 
+// Create a Cart Context
+const CartContext = createContext();
 
-const myContext = createContext();
+// Custom hook to use Cart Context
+export const useCart = () => useContext(CartContext);
 
-export const useMyContext = ()=>{
-    return useContext(myContext);
-}
+// Cart Provider component
+export const CartProvider = ({ children }) => {
+  const [cartItems, setCartItems] = useState([]);
+  
 
-
-export const MyContextProvider =({children})=>{
-    const [cart,setCart] = useState();
-
-    const allproduct= {
-        cart,
-        setCart
+  // Load cart items from localStorage on component mount
+  useEffect(() => {
+    try {
+      const storedCartItems = JSON.parse(localStorage.getItem('cartItems'));
+      if (storedCartItems && Array.isArray(storedCartItems)) {
+        setCartItems(storedCartItems);
+      }
+    } catch (error) {
+      console.error('Error loading cart items from localStorage:', error);
     }
+  }, []);
 
+  // Save cart items to localStorage whenever cartItems changes
+  useEffect(() => {
+    try {
+      localStorage.setItem('cartItems', JSON.stringify(cartItems));
+    } catch (error) {
+      console.error('Error saving cart items to localStorage:', error);
+    }
+  }, [cartItems]);
 
-    return <myContext.Provider value={allproduct}> {children} </myContext.Provider>
+  const addToCart = (item) => {
+    setCartItems([...cartItems, item]);
+  };
 
-}
+  const removeFromCart = (index) => {
+    const updatedCartItems = cartItems.filter((_, i) => i !== index);
+    setCartItems(updatedCartItems);
+  };
+
+  const cartCount = cartItems.length;
+
+  return (
+    <CartContext.Provider value={{ cartItems, cartCount, addToCart, removeFromCart }}>
+      {children}
+    </CartContext.Provider>
+  );
+};

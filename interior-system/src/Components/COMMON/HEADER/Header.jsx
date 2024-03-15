@@ -2,8 +2,13 @@
 import React from 'react'
 import './Header.css'
 import { Link, useLocation } from 'react-router-dom'
+import { useCart } from '../../CONTEXT/context'
 
-function Header() {
+function Header({count}) {
+
+    const { cartCount } = useCart();
+
+
     
   const location=useLocation().pathname
   const isLogin = location === '/'
@@ -50,7 +55,7 @@ function Header() {
                         isAgentLogin || isAgentaboutus || isAgentcontactus ?
                         <ul style={{display: isLogin || isRegister ? 'none' : ''}}>
                             <li><Link to={'/agentloginprofile'} className='nav-links'>Home</Link></li>
-                            <li><Link to={'/agentloginprofile'} className='nav-links'>Products</Link></li>
+                            <li><Link to={'/agentproductlist'} className='nav-links'>Products</Link></li>
                             <li><Link to={'/agentcontact-us'} className='nav-links'>Contact Us</Link></li>
                             <li><Link to={'/agentabout-us'} className='nav-links'>About Us</Link></li>
                             <li><Link to={'/'}  onClick={handleLogout} className='nav-links'>Logout</Link></li>
@@ -63,7 +68,7 @@ function Header() {
                             <ul style={{display: isLogin || isRegister ? 'none' : ''}}>
                                 <li><Link to={'products'} className='nav-links'>Products</Link></li>
                                 <li><Link to={'/wishlist'} className='nav-links'>Wishlist <span class="badge bg-light text-warning ms-1 rounded-pill">0</span></Link></li>
-                                <li><Link to={'/cart'} className='nav-links'>Cart<span class="badge bg-light text-warning ms-1 rounded-pill">0</span></Link></li>
+                                <li><Link to={'/cart'} className='nav-links'>Cart<span class="badge bg-light text-warning ms-1 rounded-pill">{cartCount}</span></Link></li>
                                 <li><Link to={'/'}  onClick={handleLogout} className='nav-links'>Logout</Link></li>
                             </ul>
                             : 

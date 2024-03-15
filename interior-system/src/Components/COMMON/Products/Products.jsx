@@ -1,15 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { Button, Card } from "react-bootstrap";
-import { Link } from "react-router-dom";
 import { productlistAPI } from "../../Services/allApis";
+import { useCart } from "../../CONTEXT/context";
+import  './Product.css'
 
-function Products() {
+function Products({ data }) {
+
+  const { addToCart } = useCart();
+
+ 
   const token = localStorage.getItem("token");
   const headers = {
     Authorization: `Bearer ${token}`,
   };
 
-  const [product, setProduct] = useState();
+  const [product, setProduct] = useState([]);
 
   const handleProduct = async () => {
     console.log(token);
@@ -26,7 +31,7 @@ function Products() {
       <div className="align-item-center justify-content-center mt-5 mb-5 d-flex">
         {product ? (
           product.map((i) => (
-            <Card style={{ width: "22rem" }} className="ms-5 shadow p-2">
+            <Card style={{ width: "22rem" }} className="ms-5 shadow p-2 cards-product">
               <Card.Img
                 variant="top"
                 src={i.photo}
@@ -50,7 +55,7 @@ function Products() {
                     </Button>
                   {" "}
                 
-                    <Button className="btn  mt-auto  btn-light">
+                    <Button onClick={() => addToCart(data)} className="btn  mt-auto  btn-light">
                       <i
                         className="fa-solid fa-cart-plus text-success "
                         style={{ fontSize: "30px" }}

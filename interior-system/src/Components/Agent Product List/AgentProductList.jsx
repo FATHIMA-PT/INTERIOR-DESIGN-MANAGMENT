@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Button, Card, Modal } from 'react-bootstrap';
+import { Button, Form, Modal } from 'react-bootstrap';
 
 
 function AgentProductList() {
@@ -25,17 +25,31 @@ function AgentProductList() {
         style={{height:'600rem'}}
       >
         <Modal.Header closeButton>
-          <Modal.Title>Modal title</Modal.Title>
+          <Modal.Title>Add Products</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          I will not close if you click outside me. Do not even try to press
-          escape key.
+        <Form className='border border-secondary p-3'>
+            <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Control type="text" placeholder="Enter Product Name" />
+            </Form.Group>
+          
+            <Form.Group className="mb-3" controlId="formBasicEmail">
+            </Form.Group>
+            <label htmlFor="image" className='text-center'>
+                <input id='image' className='mb-3' type="file" />
+                
+            </label>
+            <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Control type="text" placeholder="Enter Product Price"  />
+            </Form.Group>
+            
+         </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
+          <Button variant="secondary" className='btn btn-danger me-4 ' onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary">Understood</Button>
+          <Button variant="primary" className='btn btn-warning'>Upload</Button>
         </Modal.Footer>
       </Modal>
          </div>

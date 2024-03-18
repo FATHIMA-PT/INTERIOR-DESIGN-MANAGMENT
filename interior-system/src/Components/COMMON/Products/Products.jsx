@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Button, Card } from "react-bootstrap";
 import { productlistAPI } from "../../Services/allApis";
-import { useCart } from "../../CONTEXT/context";
+import { useCart, useWishlist } from "../../CONTEXT/context";
 import  './Product.css'
 
 function Products({ data }) {
 
   const { addToCart } = useCart();
-
+  const {addToWishlist} = useWishlist();
  
   const token = localStorage.getItem("token");
   const headers = {
@@ -47,7 +47,7 @@ function Products({ data }) {
                 </Card.Text>
                 <div className="d-flex justify-content-between ">
                   
-                    <Button className="btn  mt-auto btn-light">
+                    <Button onClick={()=>addToWishlist(data)} className="btn  mt-auto btn-light">
                       <i
                         className="fa-solid fa-heart text-danger"
                         style={{ fontSize: "30px" }}

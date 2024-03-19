@@ -2,11 +2,12 @@
 import React from 'react'
 import './Header.css'
 import { Link, useLocation } from 'react-router-dom'
-import { useCart } from '../../CONTEXT/context'
+import { useCart, useWishlist } from '../../CONTEXT/context'
 
-function Header({count}) {
+function Header() {
 
     const { cartCount } = useCart();
+    const { wishlistCount } = useWishlist();
 
 
     
@@ -70,7 +71,7 @@ function Header({count}) {
                         isProducts || isWishlist || isCart ?
                             <ul style={{display: isLogin || isRegister ? 'none' : ''}}>
                                 <li><Link to={'products'} className='nav-links'>Products</Link></li>
-                                <li><Link to={'/wishlist'} className='nav-links'>Wishlist <span class="badge bg-light text-warning ms-1 rounded-pill">0</span></Link></li>
+                                <li><Link to={'/wishlist'} className='nav-links'>Wishlist <span class="badge bg-light text-warning ms-1 rounded-pill">{wishlistCount }</span></Link></li>
                                 <li><Link to={'/cart'} className='nav-links'>Cart<span class="badge bg-light text-warning ms-1 rounded-pill">{cartCount}</span></Link></li>
                                 <li><Link to={'/'}  onClick={handleLogout} className='nav-links'>Logout</Link></li>
                             </ul>

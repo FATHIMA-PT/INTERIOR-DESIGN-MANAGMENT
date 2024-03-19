@@ -59,7 +59,19 @@ export const cartListApi = async(header)=>{
    return await commonAPI("GET",`${BASEURL}cartlist/`,{},header)
 }
 
+// wishList
+export const wishListApi = async(header)=>{
+   return await commonAPI("GET",`${BASEURL}wishlistview/`,{},header)
+}
 // AGENT
 
 // agent to add product
+export const agentProductAdd = async(body,header)=>{
+   return await commonAPI("POST",`${BASEURL}agent-product-create/`,body,header)
+}
+
+// get products
+export const getProductsApi = async(id,header)=>{
+   return await commonAPI("GET",`${BASEURL}agent-products/${id}/`,{},header)
+}
  

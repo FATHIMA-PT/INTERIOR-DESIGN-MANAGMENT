@@ -45,9 +45,10 @@ function Auth({ register }) {
     e.preventDefault();
    
     const response= await loginAPI(userData)
-    console.log(response);
+    console.log(response.data);
     if(response.status === 200){
       localStorage.setItem("token",response.data.access)
+      localStorage.setItem("agentId",response.data.user_id)
       if(response.data.user_type=="Customer"){
         navigate('/home-page')
       }

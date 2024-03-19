@@ -60,7 +60,7 @@ function HomeCategory() {
                         {i.Description}
                       </Card.Text>
                       <Card.Text>Price:{i.price} per sq. ft.</Card.Text>
-                      <Button className="btn btn-outline-warning text-light"><Link to={`/booking/${i.price}/${i.Name}`} className="text-light" style={{textDecoration:"none"}}>Book Now</Link></Button>
+                      <Button className="btn btn-outline-warning text-light"><Link to={`/booking/${i.price}/${i.id}`} className="text-light" style={{textDecoration:"none"}}>Book Now</Link></Button>
                     </Card.Body>
                   </Card>
 

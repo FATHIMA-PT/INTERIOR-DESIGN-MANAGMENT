@@ -27,9 +27,32 @@ export const productlistAPI = async(header)=>{
 }
 
 //  home booking -pending
-export const homesingleviewAPI = async(id,header)=>{
-   return await commonAPI("GET",`${BASEURL}homecategory/${id}`,{},header)
+export const homedesignbookingAPI = async(id,body,header)=>{
+   await commonAPI("POST",`${BASEURL}homebook/${id}/book/`,body,header)
 }
+
+//  home category single item  
+export const homecategorysingleitemAPI = async(id,header)=>{
+   return await commonAPI("GET",`${BASEURL}homedetails/${id}`,{},header)
+}
+
+//  office category single item  
+export const officecategorysingleitemAPI = async(id,header)=>{
+   return await commonAPI("GET",`${BASEURL}officedetails/${id}`,{},header)
+}
+
+// office booking 
+export const officedesignbookingAPI = async(id,body,header)=>{
+   await commonAPI("POST",`${BASEURL}officebook/${id}/book/`,body,header)
+}
+
+
+
+
+
+// export const homesingleviewAPI = async(id,header)=>{
+//    return await commonAPI("GET",`${BASEURL}homecategory/${id}`,{},header)
+// }
 
 // cartList
 export const cartListApi = async(header)=>{

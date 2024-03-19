@@ -27,6 +27,8 @@ import AgentProductList from './Components/Agent Product List/AgentProductList';
 
 import AgentBanner from './Components/AGENT_BANNER/AgentBanner';
 import AgentHomeContent from './Components/AGENT_HOME_CONTENT/AgentHomeContent';
+import Officebooking from './Components/OfficeBooking/Officebooking';
+import AgentViewBooking from './Components/AgentViewBooking/AgentViewBooking';
 
 function App() {
   return (
@@ -49,7 +51,9 @@ function App() {
         <Route path='/homecategory/:id' element={<HomeCategory/>} />
         <Route path='/office' element={<Office/>} />
         <Route path='/officecategory/:id' element={<Office_category/>} />
-        <Route path='/booking/:id/:name' element={<Booking/>} />
+        <Route path='/booking/:id/:categoryid' element={<Booking/>} />
+        <Route path='/officebooking/:id' element={<Officebooking/>} />
+
         <Route path='/purchase' element={<Purchasing/>} />
         <Route path='/billing' element={<Billing/>} />
         <Route path='/thankyou' element={<Thankyou/>} />
@@ -57,7 +61,7 @@ function App() {
         {/* agent */}
         <Route path='/agentloginprofile' element={<Agents/>} />
         <Route path='/agentproductlist' element={<AgentProductList/>} />
-
+        <Route path='/agentviewBooking' element={<AgentViewBooking/>} />
 
         <Route path='/agentbanner' element={<AgentBanner/>}/>
         <Route path='/agenthomecontent' element={<AgentHomeContent/>}/>

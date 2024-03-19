@@ -46,4 +46,9 @@ export const wishListApi = async(header)=>{
 export const agentProductAdd = async(body,header)=>{
    return await commonAPI("POST",`${BASEURL}agent-product-create/`,body,header)
 }
+
+// get products
+export const getProductsApi = async(id,header)=>{
+   return await commonAPI("GET",`${BASEURL}agent-products/${id}/`,{},header)
+}
  

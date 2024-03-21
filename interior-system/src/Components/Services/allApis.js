@@ -70,8 +70,23 @@ export const agentProductAdd = async(body,header)=>{
    return await commonAPI("POST",`${BASEURL}agent-product-create/`,body,header)
 }
 
-// get products
+// get agent products
 export const getProductsApi = async(id,header)=>{
    return await commonAPI("GET",`${BASEURL}agent-products/${id}/`,{},header)
+}
+
+// company list in header
+export const getCompanylistApi= async()=>{
+   return await commonAPI("GET",`${BASEURL}agent-list-view/`,{},"")
+}
+
+// view a particular agent product
+export const viewsAgentProductDetails= async(id)=>{
+   return await commonAPI("GET",`${BASEURL}agentproductdetails/${id}/`,{},"")
+}
+
+// view a particular product detail- agent product
+export const viewSingleProductDetails= async(id)=>{
+   return await commonAPI("GET",`${BASEURL}agentproductdetails/${id}/`,{},"")
 }
  

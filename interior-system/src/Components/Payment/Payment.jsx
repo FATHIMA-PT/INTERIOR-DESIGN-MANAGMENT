@@ -1,15 +1,16 @@
 import React, { useState } from 'react'
 import { Form } from 'react-bootstrap'
+import { Link } from 'react-router-dom';
 
 
 function Payment() {
 
-    const [showPaymentDetails, setShowPaymentDetails] = useState(false);
+  //   const [showPaymentDetails, setShowPaymentDetails] = useState(false);
 
-  const handleProceedToBuy = (event) => {
-    event.preventDefault(); // Prevent form submission
-    setShowPaymentDetails(true);
-  };
+  // const handleProceedToBuy = (event) => {
+  //   event.preventDefault(); // Prevent form submission
+  //   setShowPaymentDetails(true);
+  // };
   return (
     <div style={{height:'auto',marginTop:'100px'}} className='container mb-5 d-flex justify-content-center align-items-center w-100 flex-column'>
     
@@ -36,13 +37,14 @@ function Payment() {
          <label for="floatingInputnumber">Phone number</label>
        </div>
        <div class="d-flex justify-content-center">
+         <button  class="btn btn-warning me-4"><Link to={`/billing`} className="text-dark" style={{ textDecoration: "none" }}>Delivery to this Address</Link></button>
          <button  class="btn btn-warning me-4">Cancel</button>
-         <button class="btn btn-success ms-4"  type="submit"  onClick={handleProceedToBuy}>Proceed to Buy </button>
+         {/* <button class="btn btn-success ms-4"  type="submit"  onClick={handleProceedToBuy}>Proceed to Buy </button> */}
        </div>
         </Form>
     </div>
      
-    {showPaymentDetails && (
+    {/* {showPaymentDetails && (
      <div  class="w-50 border rounded shadow p-4 mt-4 mb-5">
     <h1 class="mb-5">Payment Details</h1>
     <h2>Delivery Address</h2>
@@ -56,9 +58,8 @@ function Payment() {
         <div class="m-3">
         </div>
     </div>
-
  </div>
-    )}
+    )} */}
     </div>
   )
 }

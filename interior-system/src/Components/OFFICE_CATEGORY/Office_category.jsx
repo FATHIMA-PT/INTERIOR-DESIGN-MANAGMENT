@@ -12,7 +12,6 @@ function Office_category() {
 
   useEffect(()=>{
     handleHomelist()
-
   },[])
 
   

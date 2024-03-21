@@ -85,11 +85,11 @@ function Cart() {
             </h4>
             <button className="btn btn-success mt-3 w-100">
               <Link
-                to={`/billing`}
+                to={`/payment`}
                 className="text-light"
                 style={{ textDecoration: "none" }}
               >
-                Check Out
+                Proceed to Buy
               </Link>
             </button>
           </div>

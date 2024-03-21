@@ -30,6 +30,7 @@ import AgentHomeContent from './Components/AGENT_HOME_CONTENT/AgentHomeContent';
 import Officebooking from './Components/OfficeBooking/Officebooking';
 import AgentViewBooking from './Components/AgentViewBooking/AgentViewBooking';
 import ViewAgentProductList from './Components/ViewAgentProductList';
+import UserBookAgentProduct from './Components/UserBookAgentProduct/UserBookAgentProduct';
 
 function App() {
   return (
@@ -55,7 +56,8 @@ function App() {
         <Route path='/booking/:id/:categoryid' element={<Booking/>} />
         <Route path='/officebooking/:id' element={<Officebooking/>} />
         {/* <Route path='/booking/:id/:name' element={<Booking/>} /> */}
-        <Route path='view-agent-product' element={<ViewAgentProductList/>} />
+        <Route path='view-agent-product/:agentid' element={<ViewAgentProductList/>} />
+        <Route path='view-agent-product/:agentid/userbookagentproduct/:designid' element={<UserBookAgentProduct/>} />
 
         <Route path='/purchase' element={<Purchasing/>} />
         <Route path='/billing' element={<Billing/>} />

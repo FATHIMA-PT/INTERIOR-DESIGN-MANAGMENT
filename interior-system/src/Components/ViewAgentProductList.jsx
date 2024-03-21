@@ -1,23 +1,24 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Card, Col, Row } from 'react-bootstrap';
 import { getProductsApi } from './Services/allApis';
+import { Link, useParams } from 'react-router-dom';
 
 
 
 function ViewAgentProductList() {
+    const {agentid}=useParams()
     const token = localStorage.getItem("token");
     const [allProducts,setAllProducts]=useState([])
-  
+  console.log(agentid);
+  console.log(token);
     // get products
     const getProducts=async()=>{
   
-      const id= localStorage.getItem("agentId")
       const reqHeader={
         Authorization: `Bearer ${token}`
       }
       try {
-      const response = await getProductsApi(id,reqHeader)
-  
+      const response = await getProductsApi(agentid,reqHeader)
       setAllProducts(response.data)
       console.log(response);
     
@@ -53,13 +54,13 @@ function ViewAgentProductList() {
       allProducts.map((product) => (
         <Col key={product.id} lg={3}>
           <Card style={{ width: '18rem' }}>
-            <Card.Img variant="top" src={product?.photo} />
+            <Card.Img variant="top" src={product.photo} />
             <Card.Body>
               <Card.Title>{product.name}</Card.Title>
               <Card.Text>
                 &#x20B9; {product.price}
               </Card.Text>
-              <Button variant="primary">Book Now</Button>
+              <Button variant="primary"><Link to={`userbookagentproduct/${product.id}`} className="text-light" style={{ textDecoration: "none" }}>Book Now</Link></Button>
             </Card.Body>
           </Card>
         </Col>

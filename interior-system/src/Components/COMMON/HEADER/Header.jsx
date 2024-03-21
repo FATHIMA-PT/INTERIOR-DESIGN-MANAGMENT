@@ -1,15 +1,19 @@
 
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './Header.css'
 import { Link, useLocation } from 'react-router-dom'
 import { useCart, useWishlist } from '../../CONTEXT/context'
+import { getCompanylistApi } from '../../Services/allApis';
 
 function Header() {
 
     const { cartCount } = useCart();
     const { wishlistCount } = useWishlist();
+    const [companylist,setCompanylist]=useState();
 
-
+useEffect(()=>{
+    handlecompanylist()
+},[])
     
   const location=useLocation().pathname
   const isLogin = location === '/'
@@ -28,12 +32,22 @@ function Header() {
   const isAgentbooking = location === '/agentviewBooking'
   
   const handleLogout = () => {
-    // Clear the local storage
     localStorage.clear();
-
-    // You may also want to redirect the user to the login page or perform any other necessary actions
-    // Example: window.location.href = '/login';
   };
+
+//   view company details
+//   const token = localStorage.getItem("token")
+//   const header={
+//     Authorization:`Bearer ${token}`
+//   }
+  const handlecompanylist=async()=>{
+    const response=await getCompanylistApi()
+    console.log(response.data);
+    setCompanylist(response.data)
+
+  }
+  console.log(companylist);
+
 
     return (
         <div>
@@ -85,6 +99,21 @@ function Header() {
                                     <li><Link to={'/office'} className='dropdown-links'>Office</Link></li>
                                 </ul>
                             </li>
+                            
+                            <li>
+                                <Link className='nav-links'>Company</Link>
+                                <ul className='dropdown'>
+                                    {companylist ? 
+                                        companylist.map((item, index) => (
+                                            <li key={item.id /* Assuming 'id' is a unique identifier */}>
+                                                <Link to={`/view-agent-product/${item.id}`} className='nav-links'>{item.username}</Link>
+                                            </li>
+                                        ))
+                                        : <></>
+                                    }
+                                </ul>
+                            </li>
+
                             <li><Link to={'products'} className='nav-links'>Products</Link></li>
                             <li><Link to={'/gallery'} className='nav-links'>Gallery</Link></li>
                             <li><Link to={'/contact-us'} className='nav-links'>Contact Us</Link></li>

@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { cartListApi } from "../Services/allApis";
+import { cartDeleteApi, cartListApi } from "../Services/allApis";
 import { useCart } from "../CONTEXT/context";
 
 function Cart() {
-  const [addCart,setAddCart] = useState([])
   const [cartList, setCartList] = useState([]);
   const { cartItems, removeFromCart } = useCart();
   const [total,setTotal]= useState(0)
@@ -12,7 +11,7 @@ function Cart() {
   // total amount
   const totalAmount = ()=> {
     if(cartList.length>0){
-      setTotal(cartList.map(item=>item.price).reduce((p1,p2)=>p1+p2))
+      setTotal(cartList.map(item=>+item?.product?.price).reduce((p1,p2)=>p1+p2,0))
     }
     else{
       setTotal(0)
@@ -23,25 +22,31 @@ function Cart() {
   const headers = {
     Authorization: `Bearer ${token}`,
   };
-  
-  const addToCart = async()=>{
-    const response = await addToCart
-  }
-
 
   const handleCart = async () => {
     const response = await cartListApi(headers);
     setCartList(response.data);
+    console.log(cartList);
   };
-  console.log(cartList);
+  // console.log(cartList);
 
-  const handleRemoveFromCart = (index) => {
-    removeFromCart(index);
+  // const handleRemoveFromCart = (index) => {
+  //   removeFromCart(index);
+  // };
+  const handleRemoveFromCart = async (itemId) => {
+    try {
+      await cartDeleteApi(itemId, headers); 
+      removeFromCart(itemId); 
+      handleCart();
+    } catch (error) {
+      console.error("Error removing item from cart:", error);
+    }
   };
   
   useEffect(() => {
     handleCart();
   }, []);
+  console.log(total);
 
   useEffect(()=> {
     totalAmount()
@@ -55,14 +60,16 @@ function Cart() {
          <div className="row ms-5 me-5">
            <div className="col-md-8">
              
-               <table className="container table mt-5 rounded shadow border">
+               <table className="container table  rounded shadow border mb-5 ">
                  <thead>
-                   <tr>
+                   <tr className="">
                      <th>#</th>
                      <th>Product Name</th>
-                     <th> Image</th>
+                     <th>Image</th>
                      <th>Price</th>
+                     <th >Quantity</th>
                      <th>Action</th>
+                     <th>Total</th>
                    </tr>
                  </thead>
                  <tbody>
@@ -78,9 +85,10 @@ function Cart() {
                            src={cartItem.product.photo}
                          />{" "}
                          <td>{cartItem.product.price}</td>
+                         <td>{cartItem.product.quantity} </td>
                          <td>
                            {" "}
-                           <button onClick={() => handleRemoveFromCart(index)} className="btn">
+                           <button onClick={() => handleRemoveFromCart(cartItem.id)} className="btn">
                              {" "}
                              <div
                                className="fa-solid fa-trash text-danger fa-2x"
@@ -88,6 +96,10 @@ function Cart() {
                              ></div>{" "}
                            </button>{" "}
                          </td>
+                         <td>{cartItem.product.price * cartItem.product.quantity}
+                      
+                         
+                       </td>
                        </tr>
                      ))
                   
@@ -97,7 +109,7 @@ function Cart() {
           
            </div>
            <div className="col-md-1"></div>
-           <div className="col-md-3 border rounded p-3 mt-5 shadow">
+           <div className="col-md-3 border rounded p-3  shadow mb-5 ">
              <h3 className="text-success fw-bolder">Cart Summary</h3>
              <h5>
                Total Products : <span>{cartList?.length}</span>{" "}

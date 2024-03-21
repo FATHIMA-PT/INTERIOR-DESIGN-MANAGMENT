@@ -3,6 +3,7 @@ import { Button, Card } from "react-bootstrap";
 import { productlistAPI } from "../../Services/allApis";
 import { useCart, useWishlist } from "../../CONTEXT/context";
 import  './Product.css'
+import axios from "axios";
 
 function Products({ data }) {
 
@@ -26,6 +27,46 @@ function Products({ data }) {
     handleProduct();
   }, []);
 
+  const handleCart = async(id)=>{
+    try {
+     
+    const response = await axios.post(`http://127.0.0.1:8000/AddToCart/${id}/1/`,{},{
+      headers:{
+        Authorization:`Bearer ${token}`
+      }
+    })
+    if(response.status === 201){
+      console.log(response);
+      alert("Added to cart")
+    }
+    } catch (error) {
+
+      console.log(error);
+    }
+    
+  }
+
+  const handleWishList = async(id)=>{
+    console.log(id);
+    try {
+     
+    const response = await axios.post(`http://127.0.0.1:8000/wishlist/add/${id}/`,{},{
+      headers:{
+        Authorization:`Bearer ${token}`
+      }
+    })
+    if(response.status === 201){
+      console.log(response);
+      alert("Added to Wishlist")
+    }
+    } catch (error) {
+      alert("Not Added")
+
+      console.log(error);
+    }
+    
+  }
+
   return (
     <>
       <div className="align-item-center justify-content-center mt-5 mb-5 d-flex">
@@ -47,7 +88,7 @@ function Products({ data }) {
                 </Card.Text>
                 <div className="d-flex justify-content-between ">
                   
-                    <Button onClick={()=>addToWishlist(data)} className="btn  mt-auto btn-light">
+                    <Button onClick={()=>handleWishList(i?.id)} className="btn  mt-auto btn-light">
                       <i
                         className="fa-solid fa-heart text-danger"
                         style={{ fontSize: "30px" }}
@@ -55,7 +96,7 @@ function Products({ data }) {
                     </Button>
                   {" "}
                 
-                    <Button onClick={() => addToCart(data)} className="btn  mt-auto  btn-light">
+                    <Button onClick={()=>handleCart(i?.id)} className="btn  mt-auto  btn-light">
                       <i
                         className="fa-solid fa-cart-plus text-success "
                         style={{ fontSize: "30px" }}

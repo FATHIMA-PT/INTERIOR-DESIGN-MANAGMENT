@@ -103,8 +103,8 @@ function Auth({ register }) {
           <div className="col-lg-6 mb-5">
             <div className="d-flex flex-column align-items-center">
               <div className="d-flex flex-column align-items-center">
-                <div className="d-flex mt-2 text-success">
-                  <span className="h1 fw-bolder mb-5">Interior Harmony</span>
+                <div className="d-flex mt-2">
+                  <span className="h1 fw-bolder mb-5" style={{color:'var( --main-color)'}}>Interior Harmony</span>
                 </div>
                 <Form className="text-light w-75">
                 <Form.Group className="mb-3" controlId="formBasicName">
@@ -171,6 +171,7 @@ function Auth({ register }) {
                         className="ms-5 mb-3 mt-3"
                         type="submit"
                         size="lg"
+                        style={{color:'var( --main-color)'}}
                       >
                         {" "}
                         Register{" "}
@@ -184,10 +185,11 @@ function Auth({ register }) {
                     <div>
                       <Button
                         onClick={handleLogin}
-                        variant="dark"
+                        // variant="dark"
                         className="ms-5 mb-3 mt-3"
                         type="submit"
                         size="lg"
+                        style={{color:'var( --main-color)',backgroundColor:'black',border:'none'}}
                       >
                         {" "}
                         Login{" "}

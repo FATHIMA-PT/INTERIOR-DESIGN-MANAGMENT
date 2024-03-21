@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import './Banner.css'
+import { Link } from 'react-router-dom';
 
 function Banner() {
     // image slide
@@ -25,7 +26,7 @@ function Banner() {
             <p className="banner-text">
                 Designing Dreams,<span className="golden">Crafting Spaces,</span> <span className="golden">  Inspiring Lives. </span> Welcome Home.
             </p>
-            <button className='banner-btn'>DISCOVER MORE</button>
+            <button className='banner-btn'><Link to={'/agentabout-us'} style={{ textDecoration: "none" }}>DISCOVER MORE</Link></button>
         </div>
     )
 }

@@ -67,6 +67,7 @@ function AgentProductList() {
           timer: 1500
         });
         handleClose();
+        getProducts();
       }
     } catch (error) {
       console.error(error);
@@ -83,6 +84,7 @@ function AgentProductList() {
     const reqHeader={
       Authorization: `Bearer ${token}`
     }
+    console.log(id);
    
     const response = await getProductsApi(id,reqHeader)
 try {
@@ -125,7 +127,7 @@ try {
     allProducts.map((product) => (
       <Col key={product.id} lg={3}>
         <Card style={{ width: '18rem' }}>
-          <Card.Img variant="top" src={product?.photo} />
+          <Card.Img variant="top" src={product?.photo} style={{height:'250px'}} />
           <Card.Body>
             <Card.Title>{product.name}</Card.Title>
             <Card.Text>

@@ -80,7 +80,7 @@ export const getCompanylistApi= async()=>{
    return await commonAPI("GET",`${BASEURL}agent-list-view/`,{},"")
 }
 
-// view a particular agent product
+// view a particular agent products
 export const viewsAgentProductDetails= async(id)=>{
    return await commonAPI("GET",`${BASEURL}agentproductdetails/${id}/`,{},"")
 }
@@ -88,5 +88,10 @@ export const viewsAgentProductDetails= async(id)=>{
 // view a particular product detail- agent product
 export const viewSingleProductDetails= async(id)=>{
    return await commonAPI("GET",`${BASEURL}agentproductdetails/${id}/`,{},"")
+}
+
+
+export const agentproductbookingApi = async(id,body,header)=>{
+   return await commonAPI("POST",`${BASEURL}agentproductbooking/${id}/book/`,body,header)
 }
  

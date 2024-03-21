@@ -69,7 +69,7 @@
 }
 
 .banner-btn:hover {
-  background-color: #fff;
+  background-color: black;
   color: var(--main-color);
   /* Darken the background color on hover if desired */
 }

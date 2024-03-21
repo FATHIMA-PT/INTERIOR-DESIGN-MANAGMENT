@@ -58,9 +58,9 @@ useEffect(()=>{
                     <img className='logo-image' src="https://i.pinimg.com/564x/67/f8/0d/67f80dfb909022631a1a1780c4efe870.jpg" alt="" />
                     {
                         isLogin || isRegister ?
-                            <h6>Interior Harmony</h6>
+                            <h6 className='heading'>Interior Harmony</h6>
                             :
-                            <Link to={'/home-page'} style={{textDecoration:'none'}}><h6>Interior Harmony</h6></Link>
+                            <Link to={'/home-page'} style={{textDecoration:'none'}}><h6 className='heading'>Interior Harmony</h6></Link>
                     }
                 </div>
 

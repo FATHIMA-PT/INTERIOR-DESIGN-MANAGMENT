@@ -214,9 +214,9 @@ try {
                     value={product.propertytype}
                   >
                     <option value="">Select Categories</option>
-                    <option value="home">Home</option>
-                    <option value="shop">Shop</option>
-                    <option value="office">Shop</option>
+                <option value="home">Home</option>
+                <option value="shop">Shop</option>
+                <option value="office">Office</option>
   
                     {/* Add other user types as needed */}
                   </Form.Control>
@@ -231,14 +231,14 @@ try {
                     value={product.catgory}
                   >
                     <option value="">Select Sub Categories</option>
-                    <option value="kitchen">Kitchen</option>
-                    <option value="diningroom">Dining Room</option>
-                    <option value="bedroom">Bathroom</option>
-                    <option value="reception"> Reception</option>
-                    <option value="meetingroom">meeting Room</option>
-                    <option value="bathroom">meeting Room</option>
-                    <option value="pantry">meeting Room</option>
-                    <option value="shoproom">meeting Room</option>
+                <option value="kitchen">Kitchen</option>
+                <option value="diningroom">DiningRoom</option>
+                <option value="bedroom">Bedroom</option>
+                <option value="reception"> Reception</option>
+                <option value="meetingroom">meeting Room</option>
+                <option value="bathroom">BathRoom</option>
+                <option value="pantry">Pantry</option>
+                <option value="shoproom">Shoproom </option>
   
   
   

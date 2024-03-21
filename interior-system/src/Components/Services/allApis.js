@@ -53,10 +53,16 @@ export const officedesignbookingAPI = async(id,body,header)=>{
 // export const homesingleviewAPI = async(id,header)=>{
 //    return await commonAPI("GET",`${BASEURL}homecategory/${id}`,{},header)
 // }
+// add to cart
+export const addTocartApi = async(id,quantity,body,header)=>{
+   return await commonAPI("POST",`${BASEURL}AddToCart/ ${id}/${quantity}`,body,header)
+}
+
+
 
 // cartList
 export const cartListApi = async(header)=>{
-   return await commonAPI("GET",`${BASEURL}cartlist/`,{},header)
+   return await commonAPI("GET",`${BASEURL}cartlist/ `,{},header)
 }
 
 // wishList

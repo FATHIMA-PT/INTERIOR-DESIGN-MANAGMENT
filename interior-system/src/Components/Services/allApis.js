@@ -28,7 +28,7 @@ export const productlistAPI = async(header)=>{
 
 //  home booking -pending
 export const homedesignbookingAPI = async(id,body,header)=>{
-   await commonAPI("POST",`${BASEURL}homebook/${id}/book/`,body,header)
+   return await commonAPI("POST",`${BASEURL}homebook/${id}/book/`,body,header)
 }
 
 //  home category single item  
@@ -43,7 +43,7 @@ export const officecategorysingleitemAPI = async(id,header)=>{
 
 // office booking 
 export const officedesignbookingAPI = async(id,body,header)=>{
-   await commonAPI("POST",`${BASEURL}officebook/${id}/book/`,body,header)
+   return await commonAPI("POST",`${BASEURL}officebook/${id}/book/`,body,header)
 }
 
 

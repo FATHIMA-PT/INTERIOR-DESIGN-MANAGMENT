@@ -10,7 +10,7 @@ function Office() {
   return (
     <>
     <div className="align-items-center justify-content-center mb-3">
-      <h2 className="text-primary fw-bolder text-center mt-5">
+      <h2 className=" fw-bolder text-center mt-5" style={{color:'var(--main-color)'}}>
         OFFICE CATEGORY{" "}
       </h2>
       
@@ -36,7 +36,7 @@ function Office() {
                     comforts of home: the best mattress, a deep cozy duvet,
                     the tactile throws and plenty of plush towels.
                   </Card.Text>
-                  <Button  className="btn btn-outline-warning text-light"><Link to={`/officecategory/reception`} className="text-light" style={{textDecoration:"none"}}>More</Link></Button>
+                  <Button  className="btn btn-outline-warning text-warning bg-dark"><Link to={`/officecategory/reception`} className="text-warning" style={{textDecoration:"none"}}>More</Link></Button>
                 </Card.Body>
               </Card>
             </div>
@@ -60,7 +60,7 @@ function Office() {
                     here's your daily dose of dining room interior design
                     inspiration to start your home interior journey today.
                   </Card.Text>
-                  <Button  className="btn btn-outline-warning text-light"><Link to={`/officecategory/meeting_room`} className="text-light" style={{textDecoration:"none"}}>More</Link></Button>
+                  <Button  className="btn btn-outline-warning text-warning bg-dark"><Link to={`/officecategory/meeting_room`} className="text-warning" style={{textDecoration:"none"}}>More</Link></Button>
                 </Card.Body>
               </Card>
             </div>
@@ -84,7 +84,7 @@ function Office() {
                     under cabinet lighting, while the materials used for
                     cabinet finishes.
                   </Card.Text>
-                  <Button  className="btn btn-outline-warning text-light"><Link to={`/officecategory/bathroom`} className="text-light" style={{textDecoration:"none"}}>More</Link></Button>
+                  <Button  className="btn btn-outline-warning text-warning bg-dark"><Link to={`/officecategory/bathroom`} className="text-warning" style={{textDecoration:"none"}}>More</Link></Button>
                 </Card.Body>
               </Card>
             </div>
@@ -108,7 +108,7 @@ function Office() {
                     under cabinet lighting, while the materials used for
                     cabinet finishes.
                   </Card.Text>
-                  <Button  className="btn btn-outline-warning text-light"><Link to={`/officecategory/pantry`} className="text-light" style={{textDecoration:"none"}}>More</Link></Button>
+                  <Button  className="btn btn-outline-warning text-warning bg-dark"><Link to={`/officecategory/pantry`} className="text-warning" style={{textDecoration:"none"}}>More</Link></Button>
                 </Card.Body>
               </Card>
             </div>

@@ -30,7 +30,7 @@ function HomeCategory() {
   return (
     <div>
       <div className="align-items-center justify-content-center mb-3">
-        <h2 className="text-primary fw-bolder text-center mt-5">
+        <h2 className="fw-bolder text-center mt-5" style={{color:'var(--main-color)'}}>
           Interior Design{" "}
         </h2>
 
@@ -60,7 +60,7 @@ function HomeCategory() {
                         {i.Description}
                       </Card.Text>
                       <Card.Text>Price:{i.price} per sq. ft.</Card.Text>
-                      <Button className="btn btn-outline-warning text-light"><Link to={`/booking/${i.price}/${i.id}`} className="text-light" style={{textDecoration:"none"}}>Book Now</Link></Button>
+                      <Button className="btn btn-outline-warning text-warning bg-dark"><Link to={`/booking/${i.price}/${i.id}`} className="text-warning" style={{textDecoration:"none"}}>Book Now</Link></Button>
                     </Card.Body>
                   </Card>
 

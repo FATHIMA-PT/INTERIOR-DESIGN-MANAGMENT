@@ -117,7 +117,7 @@ function Officebooking() {
             <div className="align-items-center justift-content-center " style={{ marginTop: '100px' }}>
                 <div className="row">
                     <div className="col-lg-4 mt-5 border rounded ms-5 mb-5 shadow-lg">
-                        <h4 className="text-center mt-5">{officedesigndetails?.Name}</h4>
+                        <h4 className="text-center mt-5" style={{color:'var(--main-color)'}}>{officedesigndetails?.Name}</h4>
                         <div className="mb-4 mt-5 d-flex justify-content-between align-items-center ">
                             <TextField
                                 onChange={(e) => {
@@ -148,7 +148,7 @@ function Officebooking() {
                             <Button
                                 onClick={handleClick}
                                 variant="outlined"
-                                className="btn btn-primary text-light me-4">
+                                className="btn btn-outline-warning text-warning bg-dark">
                                 calculate
                             </Button>
                         </div>
@@ -220,9 +220,9 @@ function Officebooking() {
                                 <Button
                                     onClick={handleofficebooking}
                                     variant="outlined"
-                                    className="btn btn-success text-dark me-4"
+                                    className="btn btn-outline-warning text-warning bg-dark me-4"
                                 >
-                                    <Link to={`/thankyou`} className="text-light" style={{ textDecoration: "none" }}> BOOK NOW</Link>
+                                    <Link to={`/thankyou`} className="text-warning" style={{ textDecoration: "none" }}> BOOK NOW</Link>
 
                                 </Button>
                             </div>

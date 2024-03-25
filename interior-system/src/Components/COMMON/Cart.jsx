@@ -26,17 +26,16 @@ function Cart() {
   const handleCart = async () => {
     const response = await cartListApi(headers);
     setCartList(response.data);
-    console.log(cartList);
+    // console.log(cartList);
   };
-  // console.log(cartList);
 
-  // const handleRemoveFromCart = (index) => {
-  //   removeFromCart(index);
-  // };
   const handleRemoveFromCart = async (itemId) => {
     try {
+      // Call the API to delete the item from the cart
       await cartDeleteApi(itemId, headers); 
+      // Remove the item from the local cart state
       removeFromCart(itemId); 
+      // Refresh the cart list after item removal
       handleCart();
     } catch (error) {
       console.error("Error removing item from cart:", error);
@@ -46,7 +45,7 @@ function Cart() {
   useEffect(() => {
     handleCart();
   }, []);
-  console.log(total);
+  // console.log(total);
 
   useEffect(()=> {
     totalAmount()
@@ -88,7 +87,7 @@ function Cart() {
                          <td>{cartItem.product.quantity} </td>
                          <td>
                            {" "}
-                           <button onClick={() => handleRemoveFromCart(cartItem.id)} className="btn">
+                           <button onClick={() => handleRemoveFromCart(cartItem?.product?.id)} className="btn">
                              {" "}
                              <div
                                className="fa-solid fa-trash text-danger fa-2x"
@@ -119,7 +118,7 @@ function Cart() {
              </h4>
              <button className="btn btn-success mt-3 w-100">
                <Link
-                 to={`/billing`}
+                 to={`/payment`}
                  className="text-light"
                  style={{ textDecoration: "none" }}
                >

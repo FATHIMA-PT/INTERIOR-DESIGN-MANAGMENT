@@ -45,7 +45,7 @@ function Auth({ register }) {
     e.preventDefault();
    
     const response= await loginAPI(userData)
-    console.log(response.data);
+    console.log(response);
     if(response.status === 200){
       localStorage.setItem("token",response.data.access)
       localStorage.setItem("agentId",response.data.user_id)

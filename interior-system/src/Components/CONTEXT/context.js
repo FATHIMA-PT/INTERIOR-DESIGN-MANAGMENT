@@ -1,9 +1,13 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
+import { wishListApi } from '../Services/allApis';
 
 // Create a Cart Context
 const CartContext = createContext();
 const WishlistContext = createContext();
-
+const token = localStorage.getItem("token");
+const headers = {
+  Authorization: `Bearer ${token}`,
+};
 // Custom hook to use Cart Context
 export const useCart = () => useContext(CartContext);
 export const useWishlist = () => useContext(WishlistContext);
@@ -12,6 +16,7 @@ export const useWishlist = () => useContext(WishlistContext);
 export const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
   const [wishlistItems, setWishlistItems] = useState([]);
+  const[wishCount,setWishlistCount] = useState()
 
   // Load cart and wishlist items from localStorage on component mount
   useEffect(() => {
@@ -48,10 +53,17 @@ export const CartProvider = ({ children }) => {
     }
   }, [wishlistItems]);
 
-  const addToCart = (item) => {
-    setCartItems([...cartItems, item]);
-  };
+  const getWishList = async()=>{
+    const response = await wishListApi(headers)
+  setWishlistCount(response.data.length)
+ }
 
+  useEffect(()=>{
+    getWishList()
+  },[wishCount])
+
+
+ 
   const removeFromCart = (index) => {
     const updatedCartItems = cartItems.filter((_, i) => i !== index);
     setCartItems(updatedCartItems);
@@ -70,8 +82,8 @@ export const CartProvider = ({ children }) => {
   const wishlistCount = wishlistItems.length;
 
   return (
-    <CartContext.Provider value={{ cartItems, cartCount, addToCart, removeFromCart }}>
-      <WishlistContext.Provider value={{ wishlistItems, wishlistCount, addToWishlist, removeFromWishlist }}>
+    <CartContext.Provider value={{ cartItems, cartCount, removeFromCart }}>
+      <WishlistContext.Provider value={{ wishlistItems, wishlistCount, addToWishlist, removeFromWishlist,wishCount }}>
         {children}
       </WishlistContext.Provider>
     </CartContext.Provider>

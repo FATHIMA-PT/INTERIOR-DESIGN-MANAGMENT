@@ -6,15 +6,12 @@ import { useCart, useWishlist } from "../CONTEXT/context";
 import { wishListApi, wishListDeleteApi } from "../Services/allApis";
 import axios from "axios";
 
-// import { wishListApi } from "../Services/allApis";
-// import axios from "axios";
+
 
 function Wishlist() {
-  const [wishlistview, setwishlistview] = useState(null);
-  const { removeFromWishlist } = useCart();
+  const [wishlistview, setwishlistview] = useState([]);
+  // const { removeFromWishlist } = useCart();
 
-  // const [wishlistItems, setWishlistItems] = useState([]);
-  // const { wishlist, removeFromWishlist  } = useWishlist();
 
   const token = localStorage.getItem("token");
   const headers = {
@@ -30,7 +27,7 @@ function Wishlist() {
       const response = await wishListApi(headers);
      
         setwishlistview(response.data);
-        console.log(response.data);
+        // console.log(response.data);
       
     } catch (error) {
       console.log(error);
@@ -60,14 +57,14 @@ function Wishlist() {
   //   removeFromWishlist(index);
   // };
 
-  if (wishlistview === null) return <></>;
-
+  
   return (
-    <div style={{ marginRight: "100px" }}>
+    <div style={{ marginRight: "100px" }} >
       {/* Conditionally render based on whether wishlistItems is empty */}
-      {wishlistview === null ? (
+      {wishlistview.length === 0 ? (
+        <>
         <div
-          className="d-flex justify-content-center align-items-center w-100"
+          className="d-flex justify-content-center align-items-center w-100 "
           style={{ height: "100vh" }}
         >
           <img
@@ -83,15 +80,15 @@ function Wishlist() {
               </Link>{" "}
             </div>
           </div>
-        </div>
+        </div></>
       ) : (
-        <div className="align-item-center justify-content-center mt-5 mb-5 d-flex">
+        <div className="align-item-center justify-content-center mt-5 mb-5 d-flex  " >
           {/* Render wishlist items */}
           {wishlistview.map((item, index) => (
             <Card
               key={index}
               style={{ width: "22rem" }}
-              className="border rounded shadow"
+              className="border rounded shadow p-4 ms-4"
             >
               <Card.Img
                 variant="top"

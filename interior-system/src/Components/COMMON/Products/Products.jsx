@@ -1,15 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Button, Card } from "react-bootstrap";
-import { productlistAPI } from "../../Services/allApis";
-import { useCart, useWishlist } from "../../CONTEXT/context";
+import { productlistAPI, wishListApi } from "../../Services/allApis";
+// import { useCart, useWishlist } from "../../CONTEXT/context";
 import  './Product.css'
 import axios from "axios";
 
-function Products({ data }) {
+function Products() {
 
-  const { addToCart } = useCart();
-  const {addToWishlist} = useWishlist();
- 
   const token = localStorage.getItem("token");
   const headers = {
     Authorization: `Bearer ${token}`,
@@ -37,13 +34,23 @@ function Products({ data }) {
     })
     if(response.status === 201){
       console.log(response);
-      alert("Added to cart")
+      // alert("Added to cart")
     }
     } catch (error) {
 
       console.log(error);
     }
     
+  }
+  const getWishlist=async()=>{
+   
+    try {
+        const response = await wishListApi(headers)
+        console.log(response);
+        
+    } catch (error) {
+        console.log(error);
+    }
   }
 
   const handleWishList = async(id)=>{
@@ -57,7 +64,9 @@ function Products({ data }) {
     })
     if(response.status === 201){
       console.log(response);
-      alert("Added to Wishlist")
+      // alert("Added to Wishlist")
+      getWishlist()
+      
     }
     } catch (error) {
       alert("Not Added")
@@ -68,11 +77,12 @@ function Products({ data }) {
   }
 
   return (
-    <>
-      <div className="align-item-center justify-content-center mt-5 mb-5 d-flex">
+    <> 
+  
+      <div className="align-item-center justify-content-center mt-5 mb-5 row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
         {product ? (
           product.map((i) => (
-            <Card style={{ width: "22rem" }} className="ms-5 shadow p-2 cards-product">
+            <Card style={{ width: "22rem" }} className="ms-5 shadow p-2 cards-product mb-5 mt-5">
               <Card.Img
                 variant="top"
                 src={i.photo}
@@ -111,6 +121,7 @@ function Products({ data }) {
           <></>
         )}
       </div>
+      
     </>
   );
 }

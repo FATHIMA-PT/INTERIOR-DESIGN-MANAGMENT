@@ -52,7 +52,7 @@ function AgentProductList() {
         formData,
         {
           headers: {
-            Authorization:` Bearer ${token}`,
+            Authorization: `Bearer ${token}`,
             "Content-Type": "multipart/form-data", 
           }
         }
@@ -98,9 +98,9 @@ try {
   
   }
 
-  useEffect(()=>{
-    getProducts()
-  },[])
+  useEffect(() => {
+    getProducts();
+  }, []);
 
   return (
   <>

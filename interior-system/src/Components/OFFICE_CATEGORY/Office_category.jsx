@@ -39,7 +39,7 @@ function Office_category() {
   return (
 <div>
          <div className="align-items-center justify-content-center mb-3">
-        <h2 className="text-primary fw-bolder text-center mt-5">
+        <h2 className=" fw-bolder text-center mt-5" style={{color:'var(--main-color)'}}>
          OFFICE CATEGORY{" "}
         </h2>
         
@@ -69,7 +69,7 @@ function Office_category() {
                      {i.Description}
                    </Card.Text>
                     <Card.Text>Price:{i.price} per sq. ft.</Card.Text>
-                   <Button  className="btn btn-outline-warning text-light"><Link to={`/officebooking/${i.id}`} className="text-light" style={{ textDecoration: "none" }}>Book Now</Link></Button>
+                   <Button  className="btn btn-outline-warning text-warning bg-dark"><Link to={`/officebooking/${i.id}`} className="text-warning" style={{ textDecoration: "none" }}>Book Now</Link></Button>
                  </Card.Body>
                </Card>
               

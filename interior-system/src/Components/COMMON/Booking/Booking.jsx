@@ -1,7 +1,7 @@
 import { TextField } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { homecategorysingleitemAPI, homedesignbookingAPI } from "../../Services/allApis";
 
 function Booking() {
@@ -69,21 +69,50 @@ function Booking() {
 
   }
 
-  const handlehomebooking=async(e)=>{
+  // const handlehomebooking=async(e)=>{
+  //   e.preventDefault();
+  //   const{ name,email,contact_no,address,product}=booking;
+  //   if (!name || !email || !contact_no || !address || !product){
+  //     alert("Please fill the form completely");
+  //   }
+  //   else{
+  //    try {
+  //     const result= await homedesignbookingAPI(categoryid,booking,headers)
+  //     console.log(result)
+  //    } catch (error) {
+  //     console.log(error);
+  //    }
+  //   }
+  // }
+
+  const handlehomebooking = async (e) => {
     e.preventDefault();
     const{ name,email,contact_no,address,product}=booking;
-    if (!name || !email || !contact_no || !address || !product){
-      alert("Please fill the form completely");
+    if (!name || !email || !contact_no || !address || !product) {
+        alert("Please fill the form completely");
     }
-    else{
-     try {
-      const result= await homedesignbookingAPI(categoryid,booking,headers)
-      console.log(result)
-     } catch (error) {
-      console.log(error);
-     }
+    else {
+        try {
+            const result = await homedesignbookingAPI(categoryid, booking, headers)
+            if (result.status === 200 || result.status === 201 ) {
+               alert('booking completed')
+
+                navigator('/thankyou')
+
+            }
+            else if (result.status !== 200) {
+                alert(result.response.data.error);
+              }
+            console.log(result)
+
+            }
+             catch (error) {
+            console.log(error);
+        }
     }
-  }
+}
+
+
 
 console.log(booking);
 
@@ -122,7 +151,7 @@ console.log(booking);
               <Button
                 onClick={handleClick}
                 variant="outlined"
-                className="btn btn-primary text-light me-4">
+                className="btn btn-outline-warning text-warning bg-dark">
                 calculate
               </Button>
             </div>
@@ -194,9 +223,9 @@ console.log(booking);
                 <Button
                 onClick={handlehomebooking}
                   variant="outlined"
-                  className="btn btn-success text-dark me-4"
+                  className="btn btn-outline-warning text-warning bg-dark"
                 >
-                  <Link to={`/thankyou`} className="text-light" style={{ textDecoration: "none" }}> BOOK NOW</Link>
+                  BOOK NOW
 
                 </Button>
               </div>

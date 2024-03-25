@@ -26,7 +26,7 @@ function Banner() {
             <p className="banner-text">
                 Designing Dreams,<span className="golden">Crafting Spaces,</span> <span className="golden">  Inspiring Lives. </span> Welcome Home.
             </p>
-            <button className='banner-btn'><Link to={'/agentabout-us'} style={{ textDecoration: "none" }}>DISCOVER MORE</Link></button>
+            <button className='banner-btn'><Link to={'/agentabout-us'} style={{ textDecoration: "none",color:'white'}}>DISCOVER MORE</Link></button>
         </div>
     )
 }

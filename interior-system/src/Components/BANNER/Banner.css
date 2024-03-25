@@ -73,3 +73,11 @@
   color: var(--main-color);
   /* Darken the background color on hover if desired */
 }
+
+.banner-btn Link:hover{
+  background-color: black;
+
+  color: var(--main-color);
+
+
+}

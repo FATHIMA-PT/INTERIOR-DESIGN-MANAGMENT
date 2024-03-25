@@ -62,6 +62,8 @@ function Auth({ register }) {
 
   };
 
+
+
    // const { username, password } = userData;
     // if ( !username || !password  ) {
     //   alert("Please fill the form completely");
@@ -157,7 +159,7 @@ function Auth({ register }) {
                     >
                       <option value="">Select User Type</option>
                       <option value="Customer">Customer</option>
-                      <option value="Agent">Agent</option>
+                      <option value="Agent">Company</option>
                       {/* Add other user types as needed */}
                     </Form.Control>
                   </Form.Group>

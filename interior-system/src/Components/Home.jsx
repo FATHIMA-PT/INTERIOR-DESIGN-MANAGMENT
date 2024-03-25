@@ -6,11 +6,14 @@ import bathroom from '../Assets/bathroom.jpg'
 import { Link } from "react-router-dom";
 
 
+
+
+
 function Home() {
   return (
     <>
       <div className="align-items-center justify-content-center mb-3">
-        <h2 className="text-primary fw-bolder text-center mt-5">
+        <h2 className="fw-bolder text-center mt-5" style={{color:'var(--main-color)'}}>
           HOME INTERIOR DESIGN{" "}
         </h2>
         
@@ -36,7 +39,7 @@ function Home() {
                       comforts of home: the best mattress, a deep cozy duvet,
                       the tactile throws and plenty of plush towels.
                     </Card.Text>
-                    <Button  className="btn btn-outline-warning text-light"><Link to={`/homecategory/visitingroom`} className="text-light" style={{textDecoration:"none"}}>More</Link></Button>
+                    <Button  className="btn btn-outline-warning text-warning bg-dark "><Link to={`/homecategory/visitingroom`} className="text-warning" style={{textDecoration:"none"}}>More</Link></Button>
                   </Card.Body>
                 </Card>
               </div>
@@ -60,7 +63,7 @@ function Home() {
                       here's your daily dose of dining room interior design
                       inspiration to start your home interior journey today.
                     </Card.Text>
-                    <Button  className="btn btn-outline-warning text-light"><Link to={`/homecategory/diningroom`} className="text-light" style={{textDecoration:"none"}}>More</Link></Button>
+                    <Button  className="btn btn-outline-warning text-warning bg-dark"><Link to={`/homecategory/diningroom`} className="text-warning" style={{textDecoration:"none"}}>More</Link></Button>
                   </Card.Body>
                 </Card>
               </div>
@@ -84,7 +87,7 @@ function Home() {
                       under cabinet lighting, while the materials used for
                       cabinet finishes.
                     </Card.Text>
-                    <Button  className="btn btn-outline-warning text-light"><Link to={`/homecategory/kitchen`} className="text-light" style={{textDecoration:"none"}}>More</Link></Button>
+                    <Button  className="btn btn-outline-warning text-warning bg-dark"><Link to={`/homecategory/kitchen`} className="text-warning" style={{textDecoration:"none"}}>More</Link></Button>
                   </Card.Body>
                 </Card>
               </div>
@@ -108,7 +111,7 @@ function Home() {
                       under cabinet lighting, while the materials used for
                       cabinet finishes.
                     </Card.Text>
-                    <Button  className="btn btn-outline-warning text-light"><Link to={`/homecategory/bedroom`} className="text-light" style={{textDecoration:"none"}}>More</Link></Button>
+                    <Button  className="btn btn-outline-warning text-warning bg-dark"><Link to={`/homecategory/bedroom`} className="text-warning" style={{textDecoration:"none"}}>More</Link></Button>
                   </Card.Body>
                 </Card>
               </div>
@@ -132,7 +135,7 @@ function Home() {
                       under cabinet lighting, while the materials used for
                       cabinet finishes.
                     </Card.Text>
-                    <Button  className="btn btn-outline-warning text-light"><Link to={`/homecategory/kidsroom`} className="text-light" style={{textDecoration:"none"}}>More</Link></Button>
+                    <Button  className="btn btn-outline-warning text-warning bg-dark"><Link to={`/homecategory/kidsroom`} className="text-warning" style={{textDecoration:"none"}}>More</Link></Button>
                   </Card.Body>
                 </Card>
               </div>
@@ -156,7 +159,7 @@ function Home() {
                       under cabinet lighting, while the materials used for
                       cabinet finishes.
                     </Card.Text>
-                    <Button  className="btn btn-outline-warning text-light"><Link to={`/homecategory/bathroom`} className="text-light" style={{textDecoration:"none"}}>More</Link></Button>
+                    <Button  className="btn btn-outline-warning text-warning bg-dark"><Link to={`/homecategory/bathroom`} className="text-warning" style={{textDecoration:"none"}}>More</Link></Button>
                   </Card.Body>
                 </Card>
               </div>

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Button, Card, Col, Row } from 'react-bootstrap';
 import { getProductsApi } from './Services/allApis';
 import { Link, useParams } from 'react-router-dom';
+import Chat from './Chat/Chat';
 
 
 
@@ -46,7 +47,11 @@ function ViewAgentProductList() {
               <i className="fa-solid fa-magnifying-glass"></i>
             </div>
           </div>
-         
+          <div className="ms-5 btn ">
+     <Link to={"/chat"}>  <i class="fa-brands fa-rocketchat ms-5 " style={{fontSize:'20px'}}>Chat us</i></Link>
+          
+       
+          </div>
             </div>
     <div className="m-5 ">
     <Row>

@@ -24,6 +24,7 @@ import Thankyou from './Components/THANKYOU/Thankyou';
 import Agents from './Components/AGENTS/Agents';
 import Payment from './Components/Payment/Payment';
 import AgentProductList from './Components/Agent Product List/AgentProductList';
+import Chat from './Components/Chat/Chat'
 
 import AgentBanner from './Components/AGENT_BANNER/AgentBanner';
 import AgentHomeContent from './Components/AGENT_HOME_CONTENT/AgentHomeContent';
@@ -58,6 +59,7 @@ function App() {
         {/* <Route path='/booking/:id/:name' element={<Booking/>} /> */}
         <Route path='view-agent-product/:agentid' element={<ViewAgentProductList/>} />
         <Route path='view-agent-product/:agentid/userbookagentproduct/:designid' element={<UserBookAgentProduct/>} />
+        <Route path='chat' element={<Chat/>} />
 
         <Route path='/purchase' element={<Purchasing/>} />
         <Route path='/billing' element={<Billing/>} />

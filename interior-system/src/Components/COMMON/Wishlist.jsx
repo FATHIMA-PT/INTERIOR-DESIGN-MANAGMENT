@@ -57,6 +57,25 @@ function Wishlist() {
   //   removeFromWishlist(index);
   // };
 
+  const handleCart = async(itemId)=>{
+    try {
+     
+    const response = await axios.post(`http://127.0.0.1:8000/AddToCart/${itemId}/1/`,{},{
+      headers:{
+        Authorization:`Bearer ${token}`
+      }
+    })
+    if(response.status === 201){
+      console.log(response);
+      // alert("Added to cart")
+    }
+    } catch (error) {
+
+      console.log(error);
+    }
+    
+  }
+
   
   return (
     <div style={{ marginRight: "100px" }} >
@@ -99,14 +118,16 @@ function Wishlist() {
                 <Card.Title>{item.product.Name}</Card.Title>
                 <Card.Text>{item.product.price}</Card.Text>
                 <div className="d-flex justify-content-between ">
-                  <Link to={"/cart"}>
-                    <Button className="btn  mt-auto  btn-light">
+                  
+                    <Button 
+                    onClick={() =>{ handleCart(item?.product?.id)}}
+                    className="btn  mt-auto  btn-light">
                       <i
                         className="fa-solid fa-cart-plus text-success "
                         style={{ fontSize: "30px" }}
                       ></i>
                     </Button>
-                  </Link>
+                 
                   {/* Pass index to handleRemoveFromWishlist */}
                   <Button
                     onClick={() =>{ handleRemoveFromWishList(item?.product?.id)}}

@@ -1,7 +1,7 @@
 import { TextField } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import { Button } from 'react-bootstrap'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import { officecategorysingleitemAPI, officedesignbookingAPI } from '../Services/allApis'
 import Swal from 'sweetalert2'
 
@@ -12,6 +12,7 @@ function Officebooking() {
     const [num1, setNum1] = useState(Number);
     const [num2, setNum2] = useState();
     const [total, setTotal] = useState();
+    const navigate = useNavigate()
 
 
     const [homebooking, setHomebooking] = useState({
@@ -76,7 +77,9 @@ function Officebooking() {
             try {
                 const result = await officedesignbookingAPI(id, homebooking, headers)
                 console.log(result)
-                let timerInterval;
+                
+                if (result.status === 200 || result.status === 201 ) {
+                    let timerInterval;
                 Swal.fire({
                     title: "Auto close alert!",
                     html: "Conform Booking in <b></b> milliseconds.",
@@ -98,6 +101,13 @@ function Officebooking() {
                         console.log("I was closed by the timer");
                     }
                 });
+     
+                 }
+                 else if (result.status !== 200) {
+                    alert(result.response.data.error);
+                    navigate('/home')
+                  }
+                console.log(result)
             } catch (error) {
                 console.log(error);
             }

@@ -11,6 +11,7 @@ function Booking() {
   const [num2, setNum2] = useState();
   const [total, setTotal] = useState();
   const [designdetails,setDesigndetails]=useState([])
+  const navigate = useNavigate()
   // const [booking,setbooking]=useState({
   //   product:designdetails,
   //   name:"",
@@ -97,11 +98,12 @@ function Booking() {
             if (result.status === 200 || result.status === 201 ) {
                alert('booking completed')
 
-                navigator('/thankyou')
+               navigate('/thankyou')
 
             }
             else if (result.status !== 200) {
                 alert(result.response.data.error);
+                navigate('/home')
               }
             console.log(result)
 

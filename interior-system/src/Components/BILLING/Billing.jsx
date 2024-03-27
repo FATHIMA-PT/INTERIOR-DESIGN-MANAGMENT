@@ -1,13 +1,27 @@
 import React, { useEffect, useState } from 'react'
-import { cartListApi } from '../Services/allApis';
+import { cartListApi, cartbuyApi } from '../Services/allApis';
+import { Link } from 'react-router-dom';
+import { Form } from 'react-bootstrap';
 
 
 function Billing() {
     const [cartProductList, setCartProductList] = useState([]);
-
     const [showPaymentDetails, setShowPaymentDetails] = useState(false);
     const [total, setTotal] = useState(0); 
-    
+    const [filter,setFilter]=useState([])
+
+    const [buy, setBuy] = useState({
+        name: "",
+        apartment: "",
+        place: "",
+        pincode: "",
+        phone_number: null,
+        price:"",
+        // cartid:"",
+        // userid:""
+
+    });
+
 
 
     const token = localStorage.getItem("token");
@@ -15,10 +29,30 @@ function Billing() {
       Authorization: `Bearer ${token}`,
     };
 
+
+    useEffect(()=>{
+    const filtered=cartProductList.filter(product=>(localStorage.setItem('cartId', product.cart)))
+        // setFilter(filtered)
+        // console.log('filter', filtered)
+    }, [cartProductList])
+
+    //function to buy products
+    const handleBuy = async ()=>{
+        
+     const cartId=localStorage.getItem('cartId')
+       try {
+        const result = await cartbuyApi(cartId,buy,headers)
+        console.log(result);
+       } catch (error) {
+        alert('internal server error')
+       }
+    }
+
     const handleCart = async () => {
         const response = await cartListApi(headers);
         setCartProductList(response.data);
-        // console.log(cartProductList);
+        console.log(response.data);
+        localStorage.setItem('cartId',response.data.cart)
       };
      
       useEffect(() => {
@@ -40,12 +74,54 @@ function Billing() {
     totalAmount()
   },[cartProductList])
 
+//   total to buy
+  useEffect(() => {
+    setBuy((prevBuy) => ({
+        ...prevBuy,
+        price: total
+    }));
+}, [total]);
+
     const handleProceedToBuy = (event) => {
         event.preventDefault(); // Prevent form submission
         setShowPaymentDetails(true);
     };
     return (
         <div style={{ marginTop: '50px', marginBottom: '50px' }}>
+            <div style={{height:'auto',marginTop:'100px'}} className='container mb-5 d-flex justify-content-center align-items-center w-100 flex-column'>
+    
+    <div className='w-50'>
+    <Form>
+     <div className='form-floating mb-3'>
+         <input onChange={(e) => setBuy({ ...buy, name: e.target.value })} type="text" class="form-control" id="floatingInputName" placeholder="Username" name="uname" formControlName="uname"/>
+         <label htmlFor="floatingInput">UserName</label>
+     </div>
+     <div className='form-floating mb-3'>
+         <input onChange={(e) => setBuy({ ...buy, apartment: e.target.value })} type="text" class="form-control" id="floatingInputflat" placeholder="Apartment / Flat.No" name="flat" formControlName="flat"/>
+         <label htmlFor="floatingInputflat">Apartment / Flat.No</label>
+     </div>
+     <div class="form-floating mb-3">
+         <input onChange={(e) => setBuy({ ...buy, place: e.target.value })} type="text"  class="form-control" id="floatingInputplace" placeholder="Place / Location" name="place" formControlName="place"/>
+     <label for="floatingInputplace">Place / Location</label>
+   </div>
+   <div class="form-floating mb-3">
+     <input onChange={(e) => setBuy({ ...buy, pincode: e.target.value })} type="text" class="form-control" id="floatingInputpincode" placeholder="PinCode" name="pincode" formControlName="pincode" />
+     <label for="floatingInputpincode">PinCode</label>
+   </div>
+   <div class="form-floating mb-3">
+     <input onChange={(e) => setBuy({ ...buy,  phone_number: e.target.value })} type="number"  class="form-control" id="floatingInputnumber" placeholder="Phone number" name="number" formControlName="number"/>
+     <label for="floatingInputnumber">Phone number</label>
+   </div>
+   <div class="d-flex justify-content-center">
+     {/* <button  class="btn btn-warning me-4"><Link to={``} className="text-dark" style={{ textDecoration: "none" }}>Delivery to this Address</Link></button> */}
+     {/* <button  class="btn btn-warning me-4">Cancel</button> */}
+     {/* <button class="btn btn-success ms-4"  type="submit"  onClick={handleProceedToBuy}>Proceed to Buy </button> */}
+   </div>
+    </Form>
+</div>
+</div>
+
+
         {cartProductList.length > 0 && (
             <>
                 <div className='row ms-5 me-5'>
@@ -80,7 +156,7 @@ function Billing() {
                         <h4>Total: $<span className='text-danger fw-bolder fs-3'>
                        {total}
                         </span></h4>
-                        <button className="btn btn-success ms-4" type="submit" onClick={handleProceedToBuy}>BUY</button>
+                        <button  className="btn btn-success ms-4" type="submit" onClick={handleProceedToBuy}>Proceed</button>
                     </div>
                 </div>
             </>
@@ -100,6 +176,8 @@ function Billing() {
                         {total}
                     </span></h4>
                     <div className="m-3"></div>
+                     <button onClick={handleBuy} className="btn btn-success ms-4" type="submit">BUY</button>
+
                 </div>
             </div>
         )}

@@ -117,4 +117,12 @@ export const viewSingleProductDetails= async(id)=>{
 export const agentproductbookingApi = async(id,body,header)=>{
    return await commonAPI("POST",`${BASEURL}agentproductbooking/${id}/book/`,body,header)
 }
+
+export const agentproductbookinglistApi = async(id,header)=>{
+   return await commonAPI("GET",`${BASEURL}agent-products-book-details/${id}/`,{},header)
+}
  
+//buy
+export const cartbuyApi=async(id,body,header)=>{
+   return await commonAPI("POST",`${BASEURL}cart_buy/${id}/`,body,header)
+}

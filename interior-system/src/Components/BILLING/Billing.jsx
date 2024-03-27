@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { cartListApi, cartbuyApi } from '../Services/allApis';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Form } from 'react-bootstrap';
 
 
@@ -9,6 +9,8 @@ function Billing() {
     const [showPaymentDetails, setShowPaymentDetails] = useState(false);
     const [total, setTotal] = useState(0); 
     const [filter,setFilter]=useState([])
+    const navigate = useNavigate()
+
 
     const [buy, setBuy] = useState({
         name: "",
@@ -43,6 +45,15 @@ function Billing() {
        try {
         const result = await cartbuyApi(cartId,buy,headers)
         console.log(result);
+        if (result.status === 200 || result.status === 201 ){
+            alert("Thanks for the purchase")
+            navigate('/thankyou')
+
+
+        }
+        else if (result.status !== 200) {
+            alert("Booking faigitled");
+          }
        } catch (error) {
         alert('internal server error')
        }

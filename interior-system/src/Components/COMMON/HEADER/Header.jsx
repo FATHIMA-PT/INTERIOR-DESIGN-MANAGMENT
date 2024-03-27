@@ -12,7 +12,7 @@ import {
 
 
 function Header() {
- 
+
   // const { cartCount } = useCart();
   // const { wishCount } = useWishlist();
   const token = localStorage.getItem("token");
@@ -43,7 +43,7 @@ function Header() {
     getWishlist();
   }, []);
 
- 
+
 
 
 
@@ -51,12 +51,12 @@ function Header() {
     try {
       const response = await cartListApi(headers);
       setCartCount(response.data.length);
-      if(response.status === 200){
+      if (response.status === 200) {
         // handleCart()
         return
       }
     } catch (error) {
-        console.log(error);
+      console.log(error);
     }
   };
 
@@ -64,7 +64,7 @@ function Header() {
     handleCart();
   }, [cartCount]);
 
- 
+
 
   const location = useLocation().pathname;
   const isLogin = location === "/";
@@ -74,6 +74,8 @@ function Header() {
   const isProducts = location === "/products";
   const isWishlist = location === "/wishlist";
   const isCart = location === "/cart";
+  const isBilling = location === "/billing";
+
 
   //   agent
   const isAgentLogin = location === "/agentloginprofile";
@@ -122,10 +124,10 @@ function Header() {
 
         <nav>
           {isAgentLogin ||
-          isAgentaboutus ||
-          isAgentcontactus ||
-          isAgentproductlist ||
-          isAgentbooking ? (
+            isAgentaboutus ||
+            isAgentcontactus ||
+            isAgentproductlist ||
+            isAgentbooking ? (
             <ul style={{ display: isLogin || isRegister ? "none" : "" }}>
               <li>
                 <Link to={"/agentloginprofile"} className="nav-links">
@@ -160,31 +162,59 @@ function Header() {
             </ul>
           ) : (
             <>
-              {isProducts || isWishlist || isCart ? (
+              {isProducts || isWishlist || isCart || isBilling ? (
                 <ul style={{ display: isLogin || isRegister ? "none" : "" }}>
-                  <li>
-                    <Link to={"products"} className="nav-links">
-                      Products
-                    </Link>
-                  </li>
-                  <li>
-                  
+                 
+
+
+                  {/* <li>
                       <Link to={"/wishlist"}  className="nav-links">
                         Wishlist{" "}
                         <span class="badge bg-light text-warning ms-1 rounded-pill">
                         {wishCount}
                         </span>
                       </Link>
-                   
+                  </li> */}
+                  <li >
+                    <Link to={"/wishlist"} className="nav-links" style={{ position: 'relative', display: 'inline-block',marginLeft:'20px' }}>
+                      <i className="fa-solid fa-heart " style={{ fontSize: "20px", zIndex: '1' }}></i>{" "}
+                      <span className="badge " style={{ position: 'relative', top: '-3px', left: '-11px', fontSize: '16px', zIndex: '5', color:' var(--main-color)' }}>
+                        {wishCount}
+                      </span>
+                    </Link>
                   </li>
-                  <li>
+
+
+
+                  {/* <li>
                     <Link to={"/cart"} className="nav-links">
                       Cart
                       <span class="badge bg-light text-warning ms-1 rounded-pill">
                         {cartCount}
                       </span>
                     </Link>
+                  </li> */}
+
+
+                  <li>
+                    <Link to={"/cart"} className="nav-links" style={{ position: 'relative', display: 'inline-block' }}>
+                    <i className="fa-solid fa-cart-plus  " style={{ fontSize: "20px" }} ></i>
+                      <span class="badge  ms-1 rounded-pill" style={{ position: 'relative', top: '-3px', left: '-11px', fontSize: '16px', zIndex: '5', color:' var(--main-color)' }}>
+                        {cartCount}
+                      </span>
+                    </Link>
                   </li>
+
+
+                  <li>
+                    <Link to={"products"} className="nav-links">
+                      Products
+                    </Link>
+                  </li>
+
+
+
+
                   <li>
                     <Link to={"/"} onClick={handleLogout} className="nav-links">
                       Logout

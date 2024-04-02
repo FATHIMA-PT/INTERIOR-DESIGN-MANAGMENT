@@ -1,50 +1,91 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
-
+import { message, viewmessage } from '../Services/allApis';
 
 function Chat() {
+  const [messageText, setMessageText] = useState('');
+  const [messages, setMessages] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetchMessages();
+  }, []);
+
+  const fetchMessages = async () => {
+    try {
+      const agentId = localStorage.getItem('agentId');
+      const token = localStorage.getItem('token');
+      const headers = {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`,
+      };
+      const result = await viewmessage(agentId, headers);
+      console.log(result);
+      setMessages(result.data);
+      setLoading(false);
+    } catch (error) {
+      console.error('Error fetching messages:', error);
+      setLoading(false);
+    }
+  };
+
+  const sendMessage = async () => {
+    const agentId = localStorage.getItem('agentId');
+    const token = localStorage.getItem('token');
+    const headers = {
+      'Authorization': `Bearer ${token}`,
+    };
+    try {
+      await message(agentId, { message: messageText }, headers);
+      fetchMessages();
+      setMessageText('');
+    } catch (error) {
+      console.error('Error sending message:', error);
+    }
+  };
+
   return (
-    <>
-    
-    <Container fluid className='mt-3 mb-5 ' >
-      <Row className='' >
-        {/* Sidebar */}
-        <Col md={3} className="sidebar border shadow rounded" style={{background:'#d8c9ff'}}>
-      
+    <Container fluid className="mt-3 mb-5">
+      <Row>
+        <Col md={3} className="sidebar border shadow rounded" style={{ background: '#d8c9ff' }}>
           <h3>Agent Name</h3>
         </Col>
-        {/* Chat messages */}
         <Col md={6} className="chat-container border shadow rounded">
-          <div className="messages">
-         
-            <div className="message incoming">
-              <p>Hello!</p>
-            </div>
-            <div className="message outgoing">
-              <p>Hi</p>
-            </div>
-            
+          <div style={{height:'400px'}} className="messages">
+            {loading ? (
+              <p>Loading messages...</p>
+            ) : (
+              messages.map((msg, index) => (
+                <div key={index} className={`message ${msg.type}`}>
+                  <p className='text-secondary'>{msg.message}</p>
+                </div>
+              ))
+            )}
           </div>
-          {/* Chat input form */}
           <Form>
-            <Form.Group controlId="formChat">
-              <Form.Control type="text" placeholder="Type a message..." />
-            </Form.Group>
-            <div className='btn mt-4 mb-3' style={{marginLeft:'650px'}}>
-              <i class="fa-sharp fa-solid fa-play fa-beat" style={{fontSize:'30px',color:'#1b2b03'}}></i>
-            </div>
+          <div style={{display:'flex',width:"100%"}}>
+              <Form.Group controlId="formChat">
+                <input
+               
+                  type="text"
+                  placeholder="Type a message..."
+                  value={messageText}
+                  onChange={(e) => setMessageText(e.target.value)}
+                  style={{width:"700px",padding:'20px'}}
+                />
+              </Form.Group>
+              <Button variant="primary" onClick={sendMessage}>
+                Send
+              </Button>
+          </div>
           </Form>
         </Col>
-        {/* Users List */}
-        <Col md={3} className="user-list border rounded  shadow" style={{background:'#fff9e0'}}>
-         
+        <Col md={3} className="user-list border rounded shadow" style={{ background: '#fff9e0' }}>
           <h3>Users List</h3>
         </Col>
       </Row>
     </Container>
-   
-    </>
-  )
+  );
 }
 
-export default Chat
+export default Chat;

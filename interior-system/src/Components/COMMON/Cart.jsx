@@ -10,7 +10,7 @@ function Cart() {
 
   // total amount
   const totalAmount = ()=> {
-    if(cartList.length>0){
+    if(cartList?.length>0){
       setTotal(cartList.map(item=>+item?.product?.price).reduce((p1,p2)=>p1+p2,0))
     }
     else{

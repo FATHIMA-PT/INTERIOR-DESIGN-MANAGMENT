@@ -32,6 +32,7 @@ import Officebooking from './Components/OfficeBooking/Officebooking';
 import AgentViewBooking from './Components/AgentViewBooking/AgentViewBooking';
 import ViewAgentProductList from './Components/ViewAgentProductList';
 import UserBookAgentProduct from './Components/UserBookAgentProduct/UserBookAgentProduct';
+import ChatBar from './Components/Chat/ChatBar';
 
 function App() {
   return (
@@ -59,7 +60,7 @@ function App() {
         {/* <Route path='/booking/:id/:name' element={<Booking/>} /> */}
         <Route path='view-agent-product/:agentid' element={<ViewAgentProductList/>} />
         <Route path='view-agent-product/:agentid/userbookagentproduct/:designid' element={<UserBookAgentProduct/>} />
-        <Route path='chat' element={<Chat/>} />
+        <Route path='/chat' element={<Chat/>} />
         <Route path='/purchase' element={<Purchasing/>} />
         <Route path='/billing' element={<Billing/>} />
         <Route path='/thankyou' element={<Thankyou/>} />
@@ -73,6 +74,7 @@ function App() {
         <Route path='/agenthomecontent' element={<AgentHomeContent/>}/>
         {/* header */}
         <Route path='/agentcontact-us' element={<Contact />} />
+        <Route path='/agentabout-us' element={<About />} />
         <Route path='/agentabout-us' element={<About />} />
 
       </Routes>

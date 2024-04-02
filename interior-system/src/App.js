@@ -32,6 +32,7 @@ import Officebooking from './Components/OfficeBooking/Officebooking';
 import AgentViewBooking from './Components/AgentViewBooking/AgentViewBooking';
 import ViewAgentProductList from './Components/ViewAgentProductList';
 import UserBookAgentProduct from './Components/UserBookAgentProduct/UserBookAgentProduct';
+import AgentChat from './Components/Agent Chat/AgentChat';
 
 function App() {
   return (
@@ -73,6 +74,8 @@ function App() {
         <Route path='/agentbanner' element={<AgentBanner/>}/>
         <Route path='/agenthomecontent' element={<AgentHomeContent/>}/>
         {/* header */}
+        <Route path='/agentchat-us' element={<AgentChat />} />
+
         <Route path='/agentcontact-us' element={<Contact />} />
         <Route path='/agentabout-us' element={<About />} />
 

@@ -145,6 +145,11 @@ function Header() {
                 </Link>
               </li>
               <li>
+                <Link to={"/agentchat-us"} className="nav-links">
+                  Chat Us
+                </Link>
+              </li>
+              <li>
                 <Link to={"/agentcontact-us"} className="nav-links">
                   Contact Us
                 </Link>

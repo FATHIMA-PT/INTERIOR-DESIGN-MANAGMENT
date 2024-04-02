@@ -60,7 +60,6 @@ function App() {
         <Route path='view-agent-product/:agentid' element={<ViewAgentProductList/>} />
         <Route path='view-agent-product/:agentid/userbookagentproduct/:designid' element={<UserBookAgentProduct/>} />
         <Route path='chat' element={<Chat/>} />
-
         <Route path='/purchase' element={<Purchasing/>} />
         <Route path='/billing' element={<Billing/>} />
         <Route path='/thankyou' element={<Thankyou/>} />

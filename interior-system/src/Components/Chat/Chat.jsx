@@ -31,7 +31,7 @@ function Chat() {
               <Form.Control type="text" placeholder="Type a message..." />
             </Form.Group>
             <div className='btn mt-4 mb-3' style={{marginLeft:'650px'}}>
-            <i class="fa-sharp fa-solid fa-play fa-beat" style={{fontSize:'30px',color:'#1b2b03'}}></i>
+              <i class="fa-sharp fa-solid fa-play fa-beat" style={{fontSize:'30px',color:'#1b2b03'}}></i>
             </div>
           </Form>
         </Col>

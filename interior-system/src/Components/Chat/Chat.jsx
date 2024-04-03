@@ -1,11 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
 import { message, viewmessage } from '../Services/allApis';
+import { useParams } from 'react-router-dom';
+
 
 function Chat() {
+  const {agentid}=useParams()
+
   const [messageText, setMessageText] = useState('');
   const [messages, setMessages] = useState([]);
   const [loading, setLoading] = useState(true);
+
+  console.log(agentid);
 
   useEffect(() => {
     fetchMessages();
@@ -13,13 +19,13 @@ function Chat() {
 
   const fetchMessages = async () => {
     try {
-      const agentId = localStorage.getItem('agentId');
+      // const userId = localStorage.getItem('agentId');
       const token = localStorage.getItem('token');
       const headers = {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`,
       };
-      const result = await viewmessage(agentId, headers);
+      const result = await viewmessage(agentid, headers);
       console.log(result);
       setMessages(result.data);
       setLoading(false);
@@ -30,13 +36,13 @@ function Chat() {
   };
 
   const sendMessage = async () => {
-    const agentId = localStorage.getItem('agentId');
+    // const agentId = localStorage.getItem('agentId');
     const token = localStorage.getItem('token');
     const headers = {
       'Authorization': `Bearer ${token}`,
     };
     try {
-      await message(agentId, { message: messageText }, headers);
+      await message(agentid, { message: messageText }, headers);
       fetchMessages();
       setMessageText('');
     } catch (error) {
@@ -62,7 +68,7 @@ function Chat() {
               ))
             )}
           </div>
-          <Form>
+          <Form onSubmit={sendMessage}>
           <div style={{display:'flex',width:"100%"}}>
               <Form.Group controlId="formChat">
                 <input
@@ -74,14 +80,14 @@ function Chat() {
                   style={{width:"700px",padding:'20px'}}
                 />
               </Form.Group>
-              <Button variant="primary" onClick={sendMessage}>
+              <Button variant="primary" type='submit'>
                 Send
               </Button>
           </div>
           </Form>
         </Col>
         <Col md={3} className="user-list border rounded shadow" style={{ background: '#fff9e0' }}>
-          <h3>Users List</h3>
+          {/* <h3>Users List</h3> */}
         </Col>
       </Row>
     </Container>

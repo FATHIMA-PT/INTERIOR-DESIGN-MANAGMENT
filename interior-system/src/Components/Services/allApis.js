@@ -135,3 +135,8 @@ export const message=async(id,body,header)=>{
 export const viewmessage=async(id,header)=>{
    return await commonAPI("GET",`${BASEURL}listmessages/${id}/`,"",header)
 }
+
+// list messaged user
+export const listuser=async(header)=>{
+   return await commonAPI("GET",`${BASEURL}message-senders/`,{},header)
+}

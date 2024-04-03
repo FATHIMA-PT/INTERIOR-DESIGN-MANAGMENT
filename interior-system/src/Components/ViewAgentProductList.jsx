@@ -53,7 +53,7 @@ function ViewAgentProductList() {
           </div>
         </div>
         <div className="ms-5 btn ">
-          <Link to={"/chat"}>
+          <Link to={`/chat/${agentid}`}>
             <i className="fa-brands fa-rocketchat ms-5 " style={{ fontSize: '20px' }}>Chat us</i>
           </Link>
         </div>

@@ -2,16 +2,15 @@ import React, { useEffect, useState } from 'react';
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
 import { message, viewmessage } from '../Services/allApis';
 import { useParams } from 'react-router-dom';
-
+import './Chat.css'; // Import your custom CSS file
 
 function Chat() {
-  const {agentid}=useParams()
+  const { agentid } = useParams();
+  const { agentname } = useParams();
 
   const [messageText, setMessageText] = useState('');
   const [messages, setMessages] = useState([]);
   const [loading, setLoading] = useState(true);
-
-  console.log(agentid);
 
   useEffect(() => {
     fetchMessages();
@@ -19,15 +18,14 @@ function Chat() {
 
   const fetchMessages = async () => {
     try {
-      // const userId = localStorage.getItem('agentId');
       const token = localStorage.getItem('token');
       const headers = {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`,
       };
       const result = await viewmessage(agentid, headers);
-      console.log(result);
       setMessages(result.data);
+      console.log(result);
       setLoading(false);
     } catch (error) {
       console.error('Error fetching messages:', error);
@@ -35,8 +33,8 @@ function Chat() {
     }
   };
 
-  const sendMessage = async () => {
-    // const agentId = localStorage.getItem('agentId');
+  const sendMessage = async (e) => {
+    e.preventDefault();
     const token = localStorage.getItem('token');
     const headers = {
       'Authorization': `Bearer ${token}`,
@@ -51,43 +49,49 @@ function Chat() {
   };
 
   return (
-    <Container fluid className="mt-3 mb-5">
-      <Row>
-        <Col md={3} className="sidebar border shadow rounded" style={{ background: '#d8c9ff' }}>
-          <h3>Agent Name</h3>
-        </Col>
-        <Col md={6} className="chat-container border shadow rounded">
-          <div style={{height:'400px'}} className="messages">
-            {loading ? (
-              <p>Loading messages...</p>
-            ) : (
-              messages.map((msg, index) => (
-                <div key={index} className={`message ${msg.type}`}>
-                  <p className='text-secondary'>{msg.message}</p>
-                </div>
-              ))
-            )}
+    <Container fluid className='con'>
+      <Row className='mt-5 mb-5'>
+        <Col md={4}></Col>
+        <Col md={4} className="chat-container border shadow rounded ">
+          <div className='user-profile'>
+            <div className='avatar'>{agentname[0]}</div>
+            <div className='username'>{agentname}</div>
           </div>
+
+          <div className="messages-container">
+            <div className="messages">
+              {loading ? (
+                <p>Loading messages...</p>
+              ) : (
+                messages.map((msg, index) => (
+                  <div key={index} className={`message ${msg.type}`}>
+                    <p className='msg-text'>{msg.message}</p>
+                  </div>
+                ))
+              )}
+            </div>
+          </div>
+
+
           <Form onSubmit={sendMessage}>
-          <div style={{display:'flex',width:"100%"}}>
+            <div className="message-input">
               <Form.Group controlId="formChat">
                 <input
-               
                   type="text"
                   placeholder="Type a message..."
                   value={messageText}
                   onChange={(e) => setMessageText(e.target.value)}
-                  style={{width:"700px",padding:'20px'}}
+                  style={{ width: "443px", padding: '10px',backgroundColor: 'rgb(24, 24, 24)',color:'white' }}
                 />
               </Form.Group>
               <Button variant="primary" type='submit'>
-                Send
+              <i className="fas fa-paper-plane"></i>                            
               </Button>
-          </div>
+            </div>
           </Form>
         </Col>
-        <Col md={3} className="user-list border rounded shadow" style={{ background: '#fff9e0' }}>
-          {/* <h3>Users List</h3> */}
+        <Col md={4}>
+          {/* User List */}
         </Col>
       </Row>
     </Container>

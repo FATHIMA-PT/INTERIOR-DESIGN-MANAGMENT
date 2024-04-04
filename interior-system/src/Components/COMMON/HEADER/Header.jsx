@@ -262,7 +262,7 @@ function Header() {
                             }
                           >
                             <Link
-                              to={`/view-agent-product/${item.id}`}
+                              to={`/view-agent-product/${item.id}/${item.username}`}
                               className="nav-links"
                             >
                               {item.username}

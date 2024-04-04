@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
 import { listuser, message, viewmessage } from '../Services/allApis';
-import './AgentChat.css'
+import './AgentChat.css';
+import gifImage from '../../Assets/msgGif2.gif'
 
 function AgentChat() {
   const [messageText, setMessageText] = useState('');
@@ -11,6 +12,9 @@ function AgentChat() {
   const [sender, setSender] = useState(null);
   const [sendername, setSendername] = useState(null);
 
+  const username = localStorage.getItem('username');
+
+console.log(username);
 
   // useEffect(() => {
   //   // fetchMessage(sender);
@@ -51,7 +55,7 @@ function AgentChat() {
         'Authorization': `Bearer ${token}`,
       };
       const result = await viewmessage(senderId, headers);
-      console.log(result);
+      console.log(result.data);
       setMessages(result.data);
       setLoading(false);
     } catch (error) {
@@ -79,9 +83,9 @@ function AgentChat() {
   };
 
   return (
-    <Container fluid className="mt-3 mb-5">
+    <Container fluid className="containser-chat">
       <Row>
-        <Col md={4} className="sidebar border shadow rounded" style={{ background: "#F5F5DC" }}>
+        <Col md={4} className="sidebar border shadow rounded" style={{ background: "#1F272A" }}>
           <h3>User Name</h3>
           {<div className="user-list">
             {userlist.map((user, index) => (
@@ -98,39 +102,50 @@ function AgentChat() {
 
         </Col>
         <Col md={8} className="chat-container border shadow rounded">
-          {sender?<div className='user'>
+          {sender ? <div className='users'>
             <div className='first-letter'>{sendername[0]}</div>
             <div className='username-name'>{sendername}</div>
-          </div>:(<> <h2>Hi Alll</h2> </>)}
+          </div> : (<>
+            <img src={gifImage} alt="" className='msg-gif' />
+          </>)}
 
-          
-          <div style={{ height: '400px' }} className="messages">
-            {loading ? (
-              <></>
-            ) : (
-              messages.map((msg, index) => (
-                <div key={index} className={`message ${msg.type}`}>
-                  <p className='text-dark'>{msg.message}</p>
-                </div>
-              ))
-            )}
-          </div>
+          {sender ?
+            <div style={{ height: '450px' }} className="messages">
+              {loading ? (
+                <></>
+              ) : (
+                messages.map((msg, index) => (
+                  <div key={index} className={`message ${msg.type} ${msg.receiver_username === username ? "" : "receiver"} receiver-msg `}>
+                    <div className={`name-center ${msg.receiver_username === username ? "" : "reverse"}`}>
+                      <p className='first-letter me-2'>{msg.sender_username[0]}</p>
+                      <p className={`msg ${msg.receiver_username === username ? "receiver-color" : ""} me-2`}>
+                        {msg.message}
+                      </p>
+                    </div>
+                  </div>
+                ))
+              )}
+            </div> : <></>}
           {/* Chat input form */}
-          {sender?
-          <Form onSubmit={sendMessage}>
-            <Form.Group controlId="formChat" className="mb-3">
-              <Form.Control
-                type="text"
-                placeholder="Type a message..."
-                value={messageText}
-                onChange={(e) => setMessageText(e.target.value)}
-              />
-            </Form.Group>
-            <Button variant="primary" type="submit">
-              Send
-            </Button>
-          </Form>
-          :<></>}
+          {sender ?
+            <div style={{ display: 'flex', alignItems: 'center' }}>
+              <Form onSubmit={sendMessage} style={{ flex: '1' }}>
+                <Form.Group controlId="formChat" style={{ marginBottom: '0' }}>
+                  <Form.Control
+                    type="text"
+                    placeholder="Type a message..."
+                    value={messageText}
+                    onChange={(e) => setMessageText(e.target.value)}
+                    className='mb-2'
+                  />
+                </Form.Group>
+              </Form>
+              <Button variant="primary" type="submit" className='send-btn mb-2'>
+                <i className="fas fa-paper-plane"></i>
+              </Button>
+            </div>
+
+            : <></>}
         </Col>
       </Row>
     </Container>

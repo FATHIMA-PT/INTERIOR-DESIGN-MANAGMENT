@@ -59,9 +59,9 @@ function App() {
         <Route path='/booking/:id/:categoryid' element={<Booking/>} />
         <Route path='/officebooking/:id' element={<Officebooking/>} />
         {/* <Route path='/booking/:id/:name' element={<Booking/>} /> */}
-        <Route path='view-agent-product/:agentid' element={<ViewAgentProductList/>} />
+        <Route path='view-agent-product/:agentid/:agentname' element={<ViewAgentProductList/>} />
         <Route path='view-agent-product/:agentid/userbookagentproduct/:designid' element={<UserBookAgentProduct/>} />
-        <Route path='/chat/:agentid' element={<Chat/>} />
+        <Route path='/chat/:agentid/:agentname' element={<Chat/>} />
         <Route path='/purchase' element={<Purchasing/>} />
         <Route path='/billing' element={<Billing/>} />
         <Route path='/thankyou' element={<Thankyou/>} />

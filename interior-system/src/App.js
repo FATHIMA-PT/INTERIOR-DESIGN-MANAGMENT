@@ -32,6 +32,7 @@ import Officebooking from './Components/OfficeBooking/Officebooking';
 import AgentViewBooking from './Components/AgentViewBooking/AgentViewBooking';
 import ViewAgentProductList from './Components/ViewAgentProductList';
 import UserBookAgentProduct from './Components/UserBookAgentProduct/UserBookAgentProduct';
+// import ChatBar from './Components/Chat/ChatBar';
 import AgentChat from './Components/Agent Chat/AgentChat';
 
 function App() {
@@ -58,10 +59,9 @@ function App() {
         <Route path='/booking/:id/:categoryid' element={<Booking/>} />
         <Route path='/officebooking/:id' element={<Officebooking/>} />
         {/* <Route path='/booking/:id/:name' element={<Booking/>} /> */}
-        <Route path='view-agent-product/:agentid' element={<ViewAgentProductList/>} />
+        <Route path='view-agent-product/:agentid/:agentname' element={<ViewAgentProductList/>} />
         <Route path='view-agent-product/:agentid/userbookagentproduct/:designid' element={<UserBookAgentProduct/>} />
-        <Route path='chat' element={<Chat/>} />
-
+        <Route path='/chat/:agentid/:agentname' element={<Chat/>} />
         <Route path='/purchase' element={<Purchasing/>} />
         <Route path='/billing' element={<Billing/>} />
         <Route path='/thankyou' element={<Thankyou/>} />
@@ -77,6 +77,7 @@ function App() {
         <Route path='/agentchat-us' element={<AgentChat />} />
 
         <Route path='/agentcontact-us' element={<Contact />} />
+        <Route path='/agentabout-us' element={<About />} />
         <Route path='/agentabout-us' element={<About />} />
 
       </Routes>

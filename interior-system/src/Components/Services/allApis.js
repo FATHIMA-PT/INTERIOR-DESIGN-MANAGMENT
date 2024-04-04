@@ -126,3 +126,17 @@ export const agentproductbookinglistApi = async(id,header)=>{
 export const cartbuyApi=async(id,body,header)=>{
    return await commonAPI("POST",`${BASEURL}cart_buy/${id}/`,body,header)
 }
+
+// chat
+export const message=async(id,body,header)=>{
+   return await commonAPI("POST",`${BASEURL}messages/${id}/`,body,header)
+}
+
+export const viewmessage=async(id,header)=>{
+   return await commonAPI("GET",`${BASEURL}listmessages/${id}/`,"",header)
+}
+
+// list messaged user
+export const listuser=async(header)=>{
+   return await commonAPI("GET",`${BASEURL}message-senders/`,{},header)
+}

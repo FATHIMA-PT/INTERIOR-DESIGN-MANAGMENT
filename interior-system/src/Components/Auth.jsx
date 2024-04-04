@@ -72,6 +72,8 @@ function Auth({ register }) {
     if (response.status === 200) {
       localStorage.setItem("token", response.data.access);
       localStorage.setItem("agentId", response.data.user_id);
+      localStorage.setItem("username", response.data.username);
+
       if (response.data.user_type == "Customer") {
         navigate("/home-page");
       } else {

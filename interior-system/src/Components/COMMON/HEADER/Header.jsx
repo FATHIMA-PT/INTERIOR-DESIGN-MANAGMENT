@@ -83,6 +83,7 @@ function Header() {
   const isAgentaboutus = location === "/agentabout-us";
   const isAgentproductlist = location === "/agentproductlist";
   const isAgentbooking = location === "/agentviewBooking";
+  const isagentchat = location === "/agentchat-us";
 
   const handleLogout = () => {
     localStorage.clear();
@@ -127,6 +128,7 @@ function Header() {
             isAgentaboutus ||
             isAgentcontactus ||
             isAgentproductlist ||
+            isagentchat ||
             isAgentbooking ? (
             <ul style={{ display: isLogin || isRegister ? "none" : "" }}>
               <li>
@@ -260,7 +262,7 @@ function Header() {
                             }
                           >
                             <Link
-                              to={`/view-agent-product/${item.id}`}
+                              to={`/view-agent-product/${item.id}/${item.username}`}
                               className="nav-links"
                             >
                               {item.username}

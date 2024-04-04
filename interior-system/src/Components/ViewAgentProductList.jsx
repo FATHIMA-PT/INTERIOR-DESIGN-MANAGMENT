@@ -6,6 +6,7 @@ import { Link, useParams } from 'react-router-dom';
 
 function ViewAgentProductList() {
   const { agentid } = useParams();
+  const {agentname}=useParams();
   const token = localStorage.getItem("token");
   const [allProducts, setAllProducts] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
@@ -17,6 +18,7 @@ function ViewAgentProductList() {
     };
     try {
       const response = await getProductsApi(agentid, reqHeader);
+      console.log(response.data);
       setAllProducts(response.data);
     } catch (error) {
       console.log(error);
@@ -53,7 +55,7 @@ function ViewAgentProductList() {
           </div>
         </div>
         <div className="ms-5 btn ">
-          <Link to={"/chat"}>
+          <Link to={`/chat/${agentid}/${agentname}`}>
             <i className="fa-brands fa-rocketchat ms-5 " style={{ fontSize: '20px' }}>Chat us</i>
           </Link>
         </div>

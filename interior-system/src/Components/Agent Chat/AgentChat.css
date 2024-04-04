@@ -1,0 +1,170 @@
+.user-list {
+  width: 100%;
+}
+
+.user {
+  padding: 10px;
+  border-bottom: 1px solid #333d41;
+  display: flex;
+}
+
+.user:hover {
+  background-color: #333d41;
+  border-radius: 20px;
+}
+
+.username-button {
+  background: none;
+  border: none;
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+  margin-left: 10px;
+  color: var(--main-color);
+
+}
+
+.username-button:hover {
+  text-decoration: none;
+}
+
+
+.first-letter {
+  width: 40px;
+  /* Adjust size as needed */
+  height: 40px;
+  /* Adjust size as needed */
+  border-radius: 50%;
+  /* Makes the div round */
+  /* background-color: #32454A;  */
+  background-color: var(--main-color);
+  color: black;
+  /* Color of the text (initial) */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  /* Adjust font size as needed */
+  text-transform: capitalize;
+}
+
+.username-name {
+  background: none;
+  border: none;
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+  margin-left: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--main-color);
+  font-size: 25px;
+
+
+}
+
+.msg-gif {
+  width: 100%;
+  height: 100%;
+}
+
+.containser-chat {
+  background-color: black;
+}
+
+.msg {
+  color: #838889;
+}
+
+.users {
+  padding: 10px;
+  border-bottom: 1px solid #333d41;
+  display: flex;
+}
+
+.send-btn {
+
+  background-color: var(--main-color);
+  font-size: 29px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+/* Add modern scrollbar styling */
+.messages {
+  height: 450px;
+  overflow-y: auto;
+  /* Enable vertical scrollbar */
+  scrollbar-width: thin;
+  /* For Firefox */
+  scrollbar-color: var(--main-color) transparent;
+  /* For Firefox */
+}
+
+/* WebKit (Chrome, Safari, etc.) scrollbar */
+.messages::-webkit-scrollbar {
+  width: 8px;
+  /* Width of the scrollbar */
+}
+
+/* Track */
+.messages::-webkit-scrollbar-track {
+  background: transparent;
+  /* Background color of the scrollbar track */
+}
+
+/* Handle */
+.messages::-webkit-scrollbar-thumb {
+  background: var(--main-color);
+  /* Color of the scrollbar handle */
+  border-radius: 4px;
+  /* Rounded corners of the scrollbar handle */
+}
+
+/* Handle on hover */
+.messages::-webkit-scrollbar-thumb:hover {
+  background: darken(var(--main-color), 10%);
+  /* Darken the handle color on hover */
+}
+
+
+/* receiver color */
+.receiver-color {
+  color: var(--main-color);
+
+
+}
+
+/* .receiver-color:before {
+  content: "";
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--main-color);
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  text-transform: capitalize;
+} */
+
+.receiver {
+  justify-content: end;
+}
+
+.name-center {
+  display: flex;
+  align-items: center;
+  
+}
+
+.receiver-msg {
+  display: flex;
+}
+.reverse{
+  flex-direction: row-reverse;
+}

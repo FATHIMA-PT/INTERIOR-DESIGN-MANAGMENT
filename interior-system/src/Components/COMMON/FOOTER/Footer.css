@@ -51,4 +51,9 @@ footer {
     width: 300px;
     font-size: 12px;
     font-weight: 400;
+    line-height: 20px;
+}
+
+.footer-links ul li {
+    margin-bottom: 15px; /* Adjust this value to increase or decrease the space */
 }

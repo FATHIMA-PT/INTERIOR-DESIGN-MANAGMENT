@@ -75,6 +75,7 @@ function Products() {
     }
     
   }
+  console.log(product);
 
   return (
     <> 
@@ -90,7 +91,7 @@ function Products() {
                 style={{ height: "250px" }}
               />
               <Card.Body>
-                <Card.Title className="text-center">{i.Name}</Card.Title>
+                <Card.Title className="text-center text-dark">{i?.Name}</Card.Title>
                 <Card.Text>
                   <h5 className="card-price mt-4">
                     Price:<span className="text-warning">${i.price}</span>

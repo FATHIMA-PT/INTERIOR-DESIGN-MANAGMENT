@@ -53,10 +53,6 @@ function Wishlist() {
     }
   };
 
-  // const handleRemoveFromWishlist = (index) => {
-  //   removeFromWishlist(index);
-  // };
-
   const handleCart = async(itemId)=>{
     try {
      

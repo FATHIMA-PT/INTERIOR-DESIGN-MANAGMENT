@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Button, Card, Col, Form, Modal, Row } from "react-bootstrap";
 import axios from "axios";
-import Swal from "sweetalert2";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { getProductsApi } from "../Services/allApis";
 
 function AgentProductList() {
@@ -52,12 +53,7 @@ function AgentProductList() {
         }
       );
       if (response.status === 201) {
-        Swal.fire({
-          icon: "success",
-          title: "Product Added",
-          showConfirmButton: false,
-          timer: 1500,
-        });
+        toast.success("Product Added")
         handleClose();
         getProducts();
       }
@@ -75,6 +71,7 @@ function AgentProductList() {
     try {
       const response = await getProductsApi(id, reqHeader);
       setAllProducts(response.data);
+      console.log(response);
     } catch (error) {
       console.log(error);
     }
@@ -122,12 +119,14 @@ function AgentProductList() {
           {filteredProducts.map((product) => (
             <Col key={product.id} lg={3}>
               <Card style={{ width: "18rem" }}>
-                <Card.Img variant="top" src={product?.photo} style={{ height: '250px' }} />
+                <Card.Img
+                  variant="top"
+                  src={product?.photo}
+                  style={{ height: "250px" }}
+                />
                 <Card.Body>
                   <Card.Title>{product.name}</Card.Title>
-                  <Card.Text>
-                    &#x20B9; {product.price}
-                  </Card.Text>
+                  <Card.Text>&#x20B9; {product.price}</Card.Text>
                   <Button variant="primary">Book Now</Button>
                 </Card.Body>
               </Card>
@@ -147,7 +146,54 @@ function AgentProductList() {
         </Modal.Header>
         <Modal.Body>
           <Form className="border border-secondary p-3">
-            {/* Form inputs */}
+            <Form.Group className="mb-3" controlId="formBasicEmail">
+              <Form.Control type="text" placeholder="Enter Product Name"  onChange={(e) =>
+                        setProduct({ ...product, name: e.target.value })
+                      }
+                      value={product.name} />
+            </Form.Group>
+            <label htmlFor="profile" className="text-center mb-3 ">
+              <input id="profile" type="file"   onChange={handleImageChange}/>
+            </label>
+            <Form.Group className="mb-3" controlId="formBasicEmail">
+              <Form.Control type="text" placeholder="Enter Product Price"  onChange={(e) =>
+                        setProduct({ ...product, price: e.target.value })
+                      }
+                      value={product.price} />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="formBasicEmail">
+              <Form.Control
+                type="text"
+                placeholder="Enter Product Description"
+                onChange={(e) =>
+                  setProduct({ ...product, description: e.target.value })
+                }
+                value={product.description}
+              />
+            </Form.Group>
+            <Form.Control as="select" name="propertytype" className="mb-3"  onChange={(e) =>
+                        setProduct({ ...product, propertytype: e.target.value })
+                      }
+                      value={product.propertytype}>
+              <option value="">Select categories</option>
+              <option value="home">Home</option>
+              <option value="shop">Shop</option>
+              <option value="office">Office</option>
+            </Form.Control>
+            <Form.Control as="select" name="catgory" className=""  onChange={(e) =>
+                        setProduct({ ...product, catgory: e.target.value })
+                      }
+                      value={product.catgory}>
+              <option value="">Select SubCategories</option>
+              <option value="kitchen">kitchen</option>
+              <option value="bathroom">Bathroom</option>
+              <option value="bedroom">Bedroom</option>
+              <option value="diningroom">Diningroom</option>
+              <option value="reception">Reception</option>
+              <option value="pantry">Pantry</option>
+              <option value="meetingroom">Meetingroom</option>
+              <option value="shoproom">Shoproom</option>
+            </Form.Control>
           </Form>
         </Modal.Body>
         <Modal.Footer>
@@ -167,6 +213,13 @@ function AgentProductList() {
           </Button>
         </Modal.Footer>
       </Modal>
+       {/* toastify */}
+     <ToastContainer
+position="top-center"
+style={{marginTop:'150px'}}
+autoClose={2000}
+theme="dark"
+/>
     </>
   );
 }

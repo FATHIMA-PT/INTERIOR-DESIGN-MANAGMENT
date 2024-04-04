@@ -140,7 +140,7 @@ console.log(username);
                   />
                 </Form.Group>
               </Form>
-              <Button variant="primary" type="submit" className='send-btn mb-2'>
+              <Button variant="primary" type="submit" className='send-btn mb-2' onClick={sendMessage}>
                 <i className="fas fa-paper-plane"></i>
               </Button>
             </div>

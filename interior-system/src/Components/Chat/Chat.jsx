@@ -35,6 +35,7 @@ function Chat() {
 
   const sendMessage = async (e) => {
     e.preventDefault();
+    console.log("hi");
     const token = localStorage.getItem('token');
     const headers = {
       'Authorization': `Bearer ${token}`,

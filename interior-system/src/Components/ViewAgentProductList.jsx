@@ -64,8 +64,8 @@ function ViewAgentProductList() {
         <Row>
           {filteredProducts.map((product) => (
             <Col key={product.id} lg={3}>
-              <Card style={{ width: '18rem' }}>
-                <Card.Img variant="top" src={product.photo} />
+              <Card style={{ width: '18rem' }} className='mb-4'>
+                <Card.Img variant="top" src={product.photo} style={{ height: "250px" }}/>
                 <Card.Body>
                   <Card.Title>{product.name}</Card.Title>
                   <Card.Text>

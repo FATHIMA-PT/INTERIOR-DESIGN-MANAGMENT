@@ -5,6 +5,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { getProductsApi } from "../Services/allApis";
 
+
 function AgentProductList() {
   const token = localStorage.getItem("token");
   const [image, setImage] = useState(null);
@@ -127,7 +128,7 @@ function AgentProductList() {
                 <Card.Body>
                   <Card.Title>{product.name}</Card.Title>
                   <Card.Text>&#x20B9; {product.price}</Card.Text>
-                  <Button variant="primary">Book Now</Button>
+                  {/* <Link to={'/agentviewBooking'}><Button variant="primary" >VIEW</Button></Link> */}
                 </Card.Body>
               </Card>
             </Col>

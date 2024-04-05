@@ -1,8 +1,69 @@
 import { TextField, Button } from '@mui/material'
-import React from 'react'
+import axios from 'axios';
+import React, { useState } from 'react'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 function Contact() {
+  const [userDetails,setUserDetails] = useState({
+    name:"",
+    email:"",
+    contact_no:"",
+    description:""
+  })
+
+  const handlesubmit = async (e) => {
+    e.preventDefault();
+    const { name, email, contact_no, description } = userDetails;
+    if (!name || !email || !contact_no || !description) {
+      toast.warning("Please fill the form completely");
+    } else {
+      // api call
+      try {
+        const response = await axios.post(
+          "http://127.0.0.1:8000/contact-us/",
+          userDetails,
+          {}
+        );
+        console.log(response);
+        toast.success("Filled Successfully")
+        setUserDetails({ name: "", email: "", contact_no: "", description: "" });
+       
+      } catch (error) {
+        
+        const errors = error?.response.data
+        console.log(errors);
+      if(errors){
+        if(errors.email){
+          toast.warning("Something Wrong")
+
+                }
+       
+        else {
+         
+          toast.warning("This username already exists. Please choose a different username")
+        
+        
+        }
+      }
+      
+      
+      }
+    
+    }
+  };
+
+  const handleCancel = () => {
+    setUserDetails({
+      username: "",
+      email: "",
+      contact_no: "",
+      description: ""
+    });
+    toast.info('Form reset');
+  };
+
   return (
     <>
       <div className='align-items-center justify-content-between mt-5 mb-5'>
@@ -14,28 +75,40 @@ function Contact() {
             <form action="">
               <div className='mb-4 mt-5 d-flex justify-content-center align-items-center '>
                 <i className="fa-solid fa-user mt-3 me-2 "></i>
-                <TextField style={{ fontSize: '' }} id="standard-basic1" label="Name" variant="standard" className='w-75 ' name='name' />
+                <TextField style={{ fontSize: '' }} id="standard-basic1" label="Name" variant="standard" className='w-75 ' name='name'  onChange={(e) =>
+                        setUserDetails({ ...userDetails, name: e.target.value })
+                      }
+                      value={userDetails.username}/>
               </div>
 
               <div className='mb-4 mt-5 d-flex justify-content-center align-items-center  '>
                 <i className="fa-solid fa-envelope mt-3 me-2 "></i>
-                <TextField id="standard-basic1" label="Email-id" variant="standard" className='w-75' name='name' />
+                <TextField id="standard-basic1" label="Email-id" variant="standard" className='w-75' name='name'  onChange={(e) =>
+                        setUserDetails({ ...userDetails, email: e.target.value })
+                      }
+                      value={userDetails.email}/>
               </div>
 
               <div className='mb-4 mt-5 d-flex justify-content-center align-items-center  '>
                 <i className="fa-solid fa-phone mt-3 me-2"></i>
-                <TextField id="standard-basic1" label="Contact-Number" variant="standard" className='w-75' name='name' />
+                <TextField id="standard-basic1" label="Contact-Number" variant="standard" className='w-75' name='name'  onChange={(e) =>
+                        setUserDetails({ ...userDetails, contact_no: e.target.value })
+                      }
+                      value={userDetails.contact_no} />
               </div>
 
 
               <div className='mb-4 mt-5 d-flex justify-content-center align-items-center  '>
-                <TextField id="outlined-basic" label="Text Here..." variant="outlined" className='w-75' />
+                <TextField id="outlined-basic" label="Text Here..." variant="outlined" className='w-75'  onChange={(e) =>
+                        setUserDetails({ ...userDetails, description: e.target.value })
+                      }
+                      value={userDetails.description} />
               </div>
 
 
               <div className='mb-4 mt-5 d-flex justify-content-center align-items-center  '>
-                <Button variant="outlined" className='btn btn-success text-dark me-4'>SUBMIT</Button>
-                <Button variant="outlined" className='btn btn-danger text-dark me-4'>CANCEL</Button>
+                <Button variant="outlined" className='btn btn-success text-dark me-4' onClick={handlesubmit}>SUBMIT</Button>
+                <Button variant="outlined" className='btn btn-danger text-dark me-4' onClick={handleCancel}>CANCEL</Button>
 
               </div>
 
@@ -50,6 +123,14 @@ function Contact() {
         </div>
 
       </div>
+           {/* toastify */}
+     <ToastContainer
+position="top-center"
+style={{marginTop:'100px'}}
+autoClose={2000}
+type="success"
+theme="light"
+/>
 
     </>
   )

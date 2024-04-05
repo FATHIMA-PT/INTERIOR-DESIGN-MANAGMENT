@@ -45,7 +45,7 @@ function Wishlist() {
         }
       );
       if (response.status === 204) {
-        alert("Item Deleted");
+        // alert("Item Deleted");
         handleAddWishList();
       }
     } catch (error) {

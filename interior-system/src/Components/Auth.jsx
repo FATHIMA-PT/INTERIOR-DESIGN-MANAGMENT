@@ -16,6 +16,7 @@ function Auth({ register }) {
     user_type: "",
   });
   console.log(userData);
+  
   //  register
   const handleRegister = async (e) => {
     e.preventDefault();

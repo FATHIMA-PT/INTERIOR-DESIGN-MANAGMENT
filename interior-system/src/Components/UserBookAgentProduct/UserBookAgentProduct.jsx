@@ -1,9 +1,10 @@
 import { TextField } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import { Button } from 'react-bootstrap'
-import { Link, useNavigate, useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { agentproductbookingApi, viewSingleProductDetails } from '../Services/allApis'
-import Swal from 'sweetalert2'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function UserBookAgentProduct() {
     const navigate = useNavigate()
@@ -81,17 +82,21 @@ function UserBookAgentProduct() {
             try {
                 const result = await agentproductbookingApi(designid, agentproductbooking, headers)
                 console.log(result)
-                if (result.status === 200 || result.status === 201 ) {
-                   alert('booking completed')
-
-                    navigate('/thankyou')
-
+                if (result.status === 200 || result.status === 201) {
+                    //    alert('booking completed')
+                    toast.success("Booking Completed", {
+                        onClose: () => {
+                          navigate('/thankyou');
+                        }
+                      });
                 }
                 else if (result.status !== 200) {
-                    alert(result.response.data.error);
-                  }
+                    toast.warning(result.response.data.error);
+
+                    // alert(result.response.data.error);
                 }
-                 catch (error) {
+            }
+            catch (error) {
                 console.log(error);
             }
         }
@@ -107,7 +112,7 @@ function UserBookAgentProduct() {
 
     return (
         <>
-            <div className="align-items-center justift-content-center " style={{ marginTop: '100px' }}>
+            <div className="align-items-center justift-content-center " style={{ marginTop: '30px' }}>
                 <div className="row">
                     <div className="col-lg-6 mt-5 mb-5 ms-5">
                         <form action="">
@@ -223,6 +228,14 @@ function UserBookAgentProduct() {
                         </div>
                     </div>
                 </div>
+                {/* toastify */}
+                <ToastContainer
+                    position="top-center"
+                    style={{ marginTop: '100px' }}
+                    autoClose={2000}
+                    type="success"
+                    theme="light"
+                />
             </div>
         </>)
 }

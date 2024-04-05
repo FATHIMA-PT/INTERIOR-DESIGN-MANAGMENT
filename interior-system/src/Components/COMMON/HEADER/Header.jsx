@@ -138,7 +138,7 @@ function Header() {
               </li>
               <li>
                 <Link to={"/agentproductlist"} className="nav-links">
-                  Products
+                  Designs
                 </Link>
               </li>
               <li>

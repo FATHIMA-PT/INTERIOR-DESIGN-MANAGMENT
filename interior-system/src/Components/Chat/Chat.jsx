@@ -12,6 +12,10 @@ function Chat() {
   const [messages, setMessages] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  const username = localStorage.getItem('username');
+
+  console.log(username);
+
   useEffect(() => {
     fetchMessages();
   }, []);
@@ -65,16 +69,19 @@ function Chat() {
                 <p>Loading messages...</p>
               ) : (
                 messages?.map((msg, index) => (
-                  <div key={index} className={`message ${msg.type}`}>
-                    <p className='msg-text'>{msg.message}</p>
+                  <div key={index} className={`message ${msg.type} ${msg.receiver_username === username ? "" : "receiver"} receiver-msg `}>
+                  <div className={`name-center ${msg.receiver_username === username ? "" : "reverse"}`}>
+                    <p className='msg-first-letter me-2'>{msg.sender_username[0]}</p>
+                    <p className='me-2 m-0 msg-text'>{msg.message}</p>
                   </div>
+                </div>
                 ))
               )}
             </div>
           </div>
 
 
-          <Form onSubmit={sendMessage}>
+          <Form onSubmit={sendMessage} className='form-color'>
             <div className="message-input">
               <Form.Group controlId="formChat">
                 <input

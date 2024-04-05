@@ -33,7 +33,7 @@ function Wishlist() {
       console.log(error);
     }
   };
-
+  console.log(wishlistview.length);
   const handleRemoveFromWishList = async (itemId) => {
     try {
       const response = await axios.delete(
@@ -76,7 +76,7 @@ function Wishlist() {
   return (
     <div style={{ marginRight: "100px" }} >
       {/* Conditionally render based on whether wishlistItems is empty */}
-      {wishlistview.length === 0 ? (
+      {wishlistview?.length === 0 ? (
         <>
         <div
           className="d-flex justify-content-center align-items-center w-100 "

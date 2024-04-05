@@ -117,10 +117,8 @@ console.log(username);
                 messages.map((msg, index) => (
                   <div key={index} className={`message ${msg.type} ${msg.receiver_username === username ? "" : "receiver"} receiver-msg `}>
                     <div className={`name-center ${msg.receiver_username === username ? "" : "reverse"}`}>
-                      <p className='first-letter me-2'>{msg.sender_username[0]}</p>
-                      <p className={`msg ${msg.receiver_username === username ? "receiver-color" : ""} me-2`}>
-                        {msg.message}
-                      </p>
+                      <p className='msg-first-letter me-2'>{msg.sender_username[0]}</p>
+                      <p className='me-2 m-0 msgmsg'>{msg.message}</p>
                     </div>
                   </div>
                 ))
